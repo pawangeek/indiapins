@@ -18,6 +18,7 @@ indiapins
      :alt: Updates
 
 .. image:: https://img.shields.io/github/license/pawangeek/indiapins.svg
+
 .. image:: https://img.shields.io/pypi/pyversions/indiapins.svg
 
 
@@ -44,15 +45,6 @@ Alternatively, install from source by cloning this repo then running
 .. code-block:: shell
 
    $ python setup.py install
-
-
-Features
---------
-* Get all the mappings of given pins
-* The Python sqlite3 module is not required, so easily to use in Clouds (no additional dependencies)
-* Works with Python 3.6, 3.7, 3.8, 3.9, and PyPy
-* Cross-platform: Windows, Mac, and Linux are officially supported.
-* Simple usage and very fast results
 
 
 Examples
