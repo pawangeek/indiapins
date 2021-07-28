@@ -87,7 +87,7 @@ To check if the given Pincode is valid or not
     True
 
 3. District by Pincode
-#####################
+######################
 
 It extracts the district of given Indian pincode
 
