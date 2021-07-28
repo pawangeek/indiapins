@@ -27,7 +27,9 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
+        'Topic :: Scientific/Engineering',
     ],
+    
     description="Python package for mapping pins to the place where it belong",
     entry_points={
         'console_scripts': [
