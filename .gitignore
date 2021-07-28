@@ -104,3 +104,4 @@ env
 
 # IDE settings
 .vscode/
+.pypirc

@@ -21,7 +21,7 @@ indiapins
 .. image:: https://img.shields.io/pypi/pyversions/indiapins.svg
 
 
-Indiapins is a Python package for getting the place tagged to particular Indian pincode
+Python package for mapping pins to the place where it belong
 
 * Free software: MIT license
 * Documentation: https://indiapins.readthedocs.io.
