@@ -17,10 +17,6 @@ indiapins
      :target: https://pyup.io/repos/github/pawangeek/indiapins/
      :alt: Updates
 
-.. image:: https://img.shields.io/github/license/pawangeek/indiapins.svg
-
-.. image:: https://img.shields.io/pypi/pyversions/indiapins.svg
-
 
 **Indiapins is a Python package for getting the places tagged to particular Indian pincode**
 
