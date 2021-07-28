@@ -22,7 +22,7 @@ indiapins
 .. image:: https://img.shields.io/pypi/pyversions/indiapins.svg
 
 
-Python package for mapping pins to the place where it belong
+**Indiapins is a Python package for getting the places tagged to particular Indian pincode**
 
 * Free software: MIT license
 * Documentation: https://indiapins.readthedocs.io.
@@ -33,18 +33,27 @@ Python package for mapping pins to the place where it belong
 Installation
 ------------
 
-Install the plugin using `pip`:
+Install the plugin using 'pip':
 
 .. code-block:: shell
 
    $ pip install indiapins
 
 Alternatively, install from source by cloning this repo then running
-`setup.py`:
+'setup.py':
 
 .. code-block:: shell
 
    $ python setup.py install
+
+
+Features
+--------
+* Get all the mappings of given pins
+* The Python sqlite3 module is not required, so easily to use in Clouds (no additional dependencies)
+* Works with Python 3.6, 3.7, 3.8, 3.9, and PyPy
+* Cross-platform: Windows, Mac, and Linux are officially supported.
+* Simple usage and very fast results
 
 
 Examples
