@@ -26,9 +26,7 @@ def _clean_zipcode(fn):
         if not zipcode or not isinstance(zipcode, str):
             raise TypeError("Invalid type, zipcode must be a string.")
 
-        return fn(
-                    _clean(zipcode, min(len(zipcode), _valid_zipcode_length)), *args, **kwargs
-                )
+        return fn(_clean(zipcode, min(len(zipcode), _valid_zipcode_length)), *args, **kwargs)
 
     return decorator
 
