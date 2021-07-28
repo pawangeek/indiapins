@@ -13,6 +13,10 @@ indiapins
         :target: https://indiapins.readthedocs.io/en/latest/?version=latest
         :alt: Documentation Status
 
+.. image:: https://img.shields.io/github/license/pawangeek/indiapins.svg
+
+.. image:: https://img.shields.io/pypi/pyversions/indiapins.svg
+
 
 .. image:: https://pyup.io/repos/github/pawangeek/indiapins/shield.svg
      :target: https://pyup.io/repos/github/pawangeek/indiapins/
@@ -25,17 +29,9 @@ Python package for mapping pins to the place where it belong
 
 * Free software: MIT license
 * Documentation: https://indiapins.readthedocs.io.
-
+* Github Repo: https://github.com/pawangeek/indiapins
 
 Features
 --------
 
 * TODO
-
-Credits
--------
-
-This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
-
-.. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
