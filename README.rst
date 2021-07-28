@@ -18,16 +18,16 @@ indiapins
      :alt: Updates
 
 .. image:: https://img.shields.io/github/license/pawangeek/indiapins.svg
-
 .. image:: https://img.shields.io/pypi/pyversions/indiapins.svg
 
 
-
-Python package for mapping pins to the place where it belong
+Indiapins is a Python package for getting the place tagged to particular Indian pincode
 
 * Free software: MIT license
 * Documentation: https://indiapins.readthedocs.io.
 * Github Repo: https://github.com/pawangeek/indiapins
+* PyPI: https://pypi.org/project/indiapins/
+
 
 Installation
 ------------
@@ -45,7 +45,54 @@ Alternatively, install from source by cloning this repo then running
 
    $ python setup.py install
 
+
 Features
 --------
+* Get all the mappings of given pins
+* The Python sqlite3 module is not required, so easily to use in Clouds (no additional dependencies)
+* Works with Python 3.6, 3.7, 3.8, 3.9, and PyPy
+* Cross-platform: Windows, Mac, and Linux are officially supported.
+* Simple usage and very fast results
 
-* TODO
+
+Examples
+--------
+
+1. Exact Match
+##############
+
+To find the names of all places, districts, circles and related information by given Indian Pincode
+
+**Important: The Pincode should be of 6 digits, in string format**
+
+.. code-block:: python
+
+    indiapins.matching('110011')
+
+    [{'Name': 'Nirman Bhawan', 'BranchType': 'Sub Post Office', 'DeliveryStatus': 'Delivery', 'Circle': 'Delhi', 'District': 'Central Delhi', 'Division': 'New Delhi Central', 'Region': 'Delhi', 'Block': 'New Delhi', 'State': 'Delhi', 'Country': 'India', 'Pincode': '110011'}, 
+    {'Name': 'South Avenue', 'BranchType': 'Sub Post Office', 'DeliveryStatus': 'Non-Delivery', 'Circle': 'Delhi', 'District': 'Central Delhi', 'Division': 'New Delhi Central', 'Region': 'Delhi', 'Block': 'New Delhi', 'State': 'Delhi', 'Country': 'India', 'Pincode': '110011'}, 
+    {'Name': 'Udyog Bhawan', 'BranchType': 'Sub Post Office', 'DeliveryStatus': 'Non-Delivery', 'Circle': 'Delhi', 'District': 'Central Delhi', 'Division': 'New Delhi Central', 'Region': 'Delhi', 'Block': 'New Delhi', 'State': 'Delhi', 'Country': 'India', 'Pincode': '110011'}]
+
+
+2. Valid Pincode
+################
+
+To check if the given Pincode is valid or not
+
+.. code-block:: python
+
+    indiapins.isvalid('110011')
+
+    True
+
+3. District by Pincode
+#####################
+
+It extracts the district of given Indian pincode
+
+.. code-block:: python
+
+    indiapins.districtmatch('302005')
+
+    'Jaipur'
+
