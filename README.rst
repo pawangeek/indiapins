@@ -3,11 +3,16 @@ indiapins
 =========
 
 
-.. image:: https://img.shields.io/pypi/v/indiapins.svg
+.. image:: https://img.shields.io/pypi/v/indiapins?label=PyPI&logo=PyPI&logoColor=white&color=blue
         :target: https://pypi.python.org/pypi/indiapins
 
-.. image:: https://img.shields.io/travis/pawangeek/indiapins.svg
-        :target: https://travis-ci.com/pawangeek/indiapins
+.. image:: https://img.shields.io/pypi/pyversions/indiapins?label=Python&logo=Python&logoColor=white
+    :target: https://www.python.org/downloads
+    :alt: Python versions
+
+.. image:: https://ci.appveyor.com/api/projects/status/43hcwr4me6vjb1fg?svg=true
+        :target: https://ci.appveyor.com/project/pawangeek/indiapins
+        :alt: Build
 
 .. image:: https://static.pepy.tech/badge/indiapins
      :target: https://pepy.tech/project/indiapins
@@ -51,7 +56,7 @@ Features
 --------
 * Get all the mappings of given pins
 * The Python sqlite3 module is not required, so easily to use in Clouds (no additional dependencies)
-* Works with Python 3.6, 3.7, 3.8, 3.9, and PyPy
+* Works with Python 3.8, 3.9, 3.10, 3.11 and PyPy
 * Cross-platform: Windows, Mac, and Linux are officially supported.
 * Simple usage and very fast results
 
