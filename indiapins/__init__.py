@@ -2,7 +2,7 @@
 
 __author__ = """Pawan Kumar Jain"""
 __email__ = 'pawanjain.432@gmail.com'
-__version__ = '0.1.4'
+__version__ = '0.1.5'
 
 import bz2
 import json
