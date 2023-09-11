@@ -3,7 +3,7 @@ History
 =======
 
 0.1.7 (2023-09-11)
------------------
+------------------
 
 * Update Pincode data to latest (Sept 2023)
 * Added coordinates info with pins
