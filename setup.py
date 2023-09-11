@@ -19,7 +19,7 @@ setup(
     author_email='pawanjain.432@gmail.com',
     python_requires='>=3.8',
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
@@ -47,6 +47,6 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/pawangeek/indiapins',
-    version='0.1.7',
+    version='1.0.0',
     zip_safe=False,
 )

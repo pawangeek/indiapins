@@ -1,0 +1,53 @@
+name: Create GitHub Release
+
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - master
+
+jobs:
+  create_release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.8  # Replace with your desired Python version
+
+      - name: Install dependencies
+        run: pip install -r requirements_dev.txt
+
+      - name: Install pypa/build
+        run: >-
+            python3 -m
+            pip install
+            build
+            --user
+
+      - name: Build a binary wheel and a source tarball
+        run: >-
+            python3 -m
+            build
+            --sdist
+            --wheel
+            --outdir dist/
+
+      - name: Check Version
+        id: check-version
+        run: |
+              echo version=$(python3 setup.py --version) >> $GITHUB_OUTPUT
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: ncipollo/release-action@v1
+
+        with:
+          tag: v${{ steps.check-version.outputs.version }}
+          artifacts: "dist/*"
+          token: ${{ secrets.TOKEN }}
