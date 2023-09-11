@@ -13,7 +13,6 @@ import sys
 _valid_zipcode_length = 6
 _digits = re.compile(r"[^\d]")
 
-
 if sys.version_info >= (3, 0):
     bz2_open = bz2.open
 else:
@@ -68,7 +67,7 @@ def matching(zipcode, zips=None):
     if zips is None:
         zips = _zips
 
-    return [z for z in zips if z['Pincode'] == zipcode]
+    return [z for z in zips if str(z['Pincode']) == zipcode]
 
 
 @_clean_zipcode
@@ -87,3 +86,16 @@ def districtmatch(zipcode, zips=None):
         raise ValueError('Invalid Pincode, Pincode not in database')
     else:
         return ', '.join(districts)
+
+
+@_clean_zipcode
+def coordinates(zipcode):
+    match_list = matching(zipcode)
+
+    coordinates_dict = {}
+
+    for matches in match_list:
+        name, latitude, longitude = matches['Name'], matches['Latitude'], matches['Longitude']
+        coordinates_dict[name] = {"latitude": str(latitude), "longitude": str(longitude)}
+
+    return coordinates_dict
