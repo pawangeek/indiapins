@@ -98,3 +98,14 @@ It extracts the district of given Indian pincode
 
     'Jaipur'
 
+4. Coordinates of Pincode
+######################
+
+It extracts all the coordinates of given Indian pincode
+
+.. code-block:: python
+
+    indiapins.coordinates('110011')
+
+    {'Udyog Bhawan': {'latitude': '28.6111111', 'longitude': '77.2127500'},
+    'Nirman Bhawan': {'latitude': '28.6108611', 'longitude': '77.2148611'}}
