@@ -18,10 +18,6 @@ indiapins
      :target: https://pepy.tech/project/indiapins
      :alt: Downloads
 
-.. image:: https://readthedocs.org/projects/indiapins/badge/?version=latest
-        :target: https://indiapins.readthedocs.io/en/latest/?version=latest
-        :alt: Documentation Status
-
 .. image:: https://pyup.io/repos/github/pawangeek/indiapins/shield.svg
      :target: https://pyup.io/repos/github/pawangeek/indiapins/
      :alt: Updates
@@ -30,7 +26,7 @@ indiapins
 **Indiapins is a Python package for getting the places tagged to particular Indian pincode**
 
 * Free software: MIT license
-* Documentation: https://indiapins.readthedocs.io.
+* Documentation: https://pawangeek.github.io/indiapins/
 * Github Repo: https://github.com/pawangeek/indiapins
 * PyPI: https://pypi.org/project/indiapins/
 

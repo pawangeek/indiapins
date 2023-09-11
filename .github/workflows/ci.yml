@@ -1,9 +1,8 @@
-name: ci
+name: Publish-Docs
 on:
   push:
     branches:
       - master
-      - main
 permissions:
   contents: write
 jobs:
