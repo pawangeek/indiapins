@@ -6,7 +6,6 @@ import pytest
 
 from click.testing import CliRunner
 
-from indiapins import indiapins
 from indiapins import cli
 
 

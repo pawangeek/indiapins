@@ -1,6 +1,12 @@
 name: Publish to Pypi
+
 on:
-  push
+  pull_request:
+    types:
+      - closed
+    branches:
+      - master
+
 jobs:
   pypi-publish:
     name: Upload release to PyPI

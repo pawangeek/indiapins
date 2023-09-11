@@ -1,10 +1,14 @@
 name: Publish-Docs
 on:
-  push:
+  pull_request:
+    types:
+      - closed
     branches:
       - master
+
 permissions:
   contents: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
