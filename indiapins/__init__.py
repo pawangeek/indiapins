@@ -2,7 +2,7 @@
 
 __author__ = """Pawan Kumar Jain"""
 __email__ = 'pawanjain.432@gmail.com'
-__version__ = '1.0.0'
+__version__ = '1.0.1'
 
 import bz2
 import json
@@ -34,7 +34,7 @@ def _clean_zipcode(fn):
 def _clean(zipcode, valid_length=_valid_zipcode_length):
     """ Assumes pincode is of type `str` """
 
-    if len(zipcode) != _valid_zipcode_length:
+    if len(zipcode) != valid_length:
         raise ValueError(
             'Invalid format, pincode must be of the format: "######"'
         )
