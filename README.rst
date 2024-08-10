@@ -25,6 +25,8 @@ indiapins
 
 **Indiapins is a Python package for getting the places tagged to particular Indian pincode**
 
+**Data is last updated of 10, August, 2024, with 157177 area pin codes**
+
 * Free software: MIT license
 * Documentation: https://pawangeek.github.io/indiapins/
 * Github Repo: https://github.com/pawangeek/indiapins
@@ -52,7 +54,7 @@ Features
 --------
 * Get all the mappings of given pins
 * The Python sqlite3 module is not required, so easily to use in Clouds (no additional dependencies)
-* Works with Python 3.8, 3.9, 3.10, 3.11 and PyPy
+* Works with 3.9, 3.10, 3.11, 3.12, 3.13 and PyPy
 * Cross-platform: Windows, Mac, and Linux are officially supported.
 * Simple usage and very fast results
 
