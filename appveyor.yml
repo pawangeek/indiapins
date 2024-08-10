@@ -11,6 +11,8 @@ environment:
   - TOXENV: py39
   - TOXENV: py310
   - TOXENV: py311
+  - TOXENV: py312
+
 
 build: false
 

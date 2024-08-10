@@ -12,7 +12,7 @@ with open('HISTORY.rst') as history_file:
 
 requirements = ['Click>=8.1.7', ]
 
-test_requirements = ['pytest>=7.4.2', ]
+test_requirements = ['pytest>=8.3.2', ]
 
 setup(
     author="Pawan Kumar Jain",
@@ -28,6 +28,7 @@ setup(
         'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: 3.10',
         'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3.12',
         'Topic :: Scientific/Engineering',
     ],
 
@@ -47,6 +48,6 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/pawangeek/indiapins',
-    version='1.0.1',
+    version='1.0.2',
     zip_safe=False,
 )
