@@ -18,14 +18,10 @@ indiapins
      :target: https://pepy.tech/project/indiapins
      :alt: Downloads
 
-.. image:: https://pyup.io/repos/github/pawangeek/indiapins/shield.svg
-     :target: https://pyup.io/repos/github/pawangeek/indiapins/
-     :alt: Updates
-
 
 **Indiapins is a Python package for getting the places tagged to particular Indian pincode**
 
-**Data is last updated of 10, August, 2024, with 157177 area pin codes**
+**Data is last updated of 26, Jan, 2025, with 157191 area pin codes**
 
 * Free software: MIT license
 * Documentation: https://pawangeek.github.io/indiapins/

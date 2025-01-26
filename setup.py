@@ -10,9 +10,9 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = ['Click>=8.1.7', ]
+requirements = ['Click>=8.1.8', ]
 
-test_requirements = ['pytest>=8.3.2', ]
+test_requirements = ['pytest>=8.3.4', ]
 
 setup(
     author="Pawan Kumar Jain",
@@ -48,6 +48,6 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/pawangeek/indiapins',
-    version='1.0.3',
+    version='1.0.4',
     zip_safe=False,
 )
