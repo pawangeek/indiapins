@@ -22,10 +22,9 @@ else:
 
 def _clean_zipcode(fn):
     def decorator(zipcode, *args, **kwargs):
-
         if not isinstance(zipcode, str):
-            warnings.warn("Invalid type, pincode must be a string")
-        
+            warnings.warn("Invalid type, pincode must be a string.")
+
         zipcode = str(zipcode).strip()
 
         return fn(
@@ -48,14 +47,6 @@ def _clean(zipcode, valid_length=_valid_zipcode_length):
 
     return zipcode
 
-def safe_access(d, k):
-    """workaround to access inconsistent keys"""
-
-    cap_key = k.capitalize()
-    low_key = k.lower()
-
-    return d.get(cap_key) or d.get(low_key)
-
 def compat_dict(d):
     """workaround to have stable api to users with consistent capitalized keys"""
 
@@ -75,7 +66,7 @@ def _resource_path(relative_path):
 
 _zips_json = _resource_path(os.path.join(os.path.dirname(os.path.abspath(__file__)), "pins.json.bz2"))
 with bz2_open(_zips_json, "rt") as f:
-    _zips = [json.loads(line) for i, line in enumerate(f)]
+    _zips = [compat_dict(json.loads(line)) for i, line in enumerate(f)]
 
 
 @_clean_zipcode
@@ -84,7 +75,7 @@ def matching(zipcode, zips=None):
     if zips is None:
         zips = _zips
 
-    return [compat_dict(z) for z in zips if str(safe_access(z, "pincode")) == zipcode]
+    return [z for z in zips if str(z['Pincode']) == zipcode]
 
 
 @_clean_zipcode
@@ -97,7 +88,7 @@ def districtmatch(zipcode, zips=None):
     if zips is None:
         zips = _zips
 
-    districts = list(set([safe_access(z, "District") for z in zips if str(safe_access(z, "pincode")) == zipcode]))
+    districts = list(set([z['District'] for z in zips if z['Pincode'] == zipcode]))
 
     if len(districts) == 0:
         raise ValueError('Invalid Pincode, Pincode not in database')
@@ -112,7 +103,7 @@ def coordinates(zipcode):
     coordinates_dict = {}
 
     for matches in match_list:
-        name, latitude, longitude = map(lambda x: safe_access(z, x), ("name", "latitude", "longitude"))
+        name, latitude, longitude = matches['Name'], matches['Latitude'], matches['Longitude']
         coordinates_dict[name] = {"latitude": str(latitude), "longitude": str(longitude)}
 
     return coordinates_dict
