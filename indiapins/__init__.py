@@ -9,6 +9,7 @@ import json
 import os
 import re
 import sys
+import warnings
 
 _valid_zipcode_length = 6
 _digits = re.compile(r"[^\d]")
@@ -21,8 +22,11 @@ else:
 
 def _clean_zipcode(fn):
     def decorator(zipcode, *args, **kwargs):
-        if not zipcode or not isinstance(zipcode, str):
-            raise TypeError("Invalid type, pincode must be a string.")
+
+        if not isinstance(zipcode, str):
+            warnings.warn("Invalid type, pincode must be a string")
+        
+        zipcode = str(zipcode).strip()
 
         return fn(
             _clean(zipcode, _valid_zipcode_length), *args, **kwargs
@@ -32,7 +36,7 @@ def _clean_zipcode(fn):
 
 
 def _clean(zipcode, valid_length=_valid_zipcode_length):
-    """ Assumes pincode is of type `str` """
+    """Assumes pincode is of type `str`"""
 
     if len(zipcode) != valid_length:
         raise ValueError(
@@ -43,6 +47,19 @@ def _clean(zipcode, valid_length=_valid_zipcode_length):
         raise ValueError('Invalid characters, pincode may only contain digits')
 
     return zipcode
+
+def safe_access(d, k):
+    """workaround to access inconsistent keys"""
+
+    cap_key = k.capitalize()
+    low_key = k.lower()
+
+    return d.get(cap_key) or d.get(low_key)
+
+def compat_dict(d):
+    """workaround to have stable api to users with consistent capitalized keys"""
+
+    return {k.capitalize():v for k, v in d.items()}
 
 
 def _resource_path(relative_path):
@@ -67,7 +84,7 @@ def matching(zipcode, zips=None):
     if zips is None:
         zips = _zips
 
-    return [z for z in zips if str(z['Pincode']) == zipcode]
+    return [compat_dict(z) for z in zips if str(safe_access(z, "pincode")) == zipcode]
 
 
 @_clean_zipcode
@@ -80,7 +97,7 @@ def districtmatch(zipcode, zips=None):
     if zips is None:
         zips = _zips
 
-    districts = list(set([z['District'] for z in zips if z['Pincode'] == zipcode]))
+    districts = list(set([safe_access(z, "District") for z in zips if str(safe_access(z, "pincode")) == zipcode]))
 
     if len(districts) == 0:
         raise ValueError('Invalid Pincode, Pincode not in database')
@@ -95,7 +112,7 @@ def coordinates(zipcode):
     coordinates_dict = {}
 
     for matches in match_list:
-        name, latitude, longitude = matches['Name'], matches['Latitude'], matches['Longitude']
+        name, latitude, longitude = map(lambda x: safe_access(z, x), ("name", "latitude", "longitude"))
         coordinates_dict[name] = {"latitude": str(latitude), "longitude": str(longitude)}
 
     return coordinates_dict
