@@ -74,17 +74,19 @@ indiapins.coordinates('110011')
 
 Each pincode record contains the following fields:
 
+- **Pincode** - 6-digit pincode (integer)
 - **Name** - Office/branch name
 - **BranchType** - Type of post office (BO, SO, PO, etc.)
 - **DeliveryStatus** - Delivery or Non Delivery
-- **Circle** - Postal circle name
 - **District** - District name
-- **Division** - Division name
-- **Region** - Region name
 - **State** - State name
-- **Pincode** - 6-digit pincode (integer)
+- **Circle** - Postal circle name
+- **Region** - Region name
+- **Division** - Division name
 - **Latitude** - Latitude coordinate (float or null)
 - **Longitude** - Longitude coordinate (float or null)
+
+**Note:** Block and Country fields are not available in the current dataset.
 
 ## Error Handling
 

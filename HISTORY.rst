@@ -13,7 +13,7 @@ History
 
 * Added new pins
 
-1.0.1 (2024-08-10)
+1.0.2 (2024-08-10)
 ------------------
 
 * Added latest libs

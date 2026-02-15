@@ -69,9 +69,14 @@ To find the names of all places, districts, circles and related information by g
 
     indiapins.matching('110011')
 
-    [{'Name': 'Nirman Bhawan', 'BranchType': 'Sub Post Office', 'DeliveryStatus': 'Delivery', 'Circle': 'Delhi', 'District': 'Central Delhi', 'Division': 'New Delhi Central', 'Region': 'Delhi', 'Block': 'New Delhi', 'State': 'Delhi', 'Country': 'India', 'Pincode': '110011'},
-    {'Name': 'South Avenue', 'BranchType': 'Sub Post Office', 'DeliveryStatus': 'Non-Delivery', 'Circle': 'Delhi', 'District': 'Central Delhi', 'Division': 'New Delhi Central', 'Region': 'Delhi', 'Block': 'New Delhi', 'State': 'Delhi', 'Country': 'India', 'Pincode': '110011'},
-    {'Name': 'Udyog Bhawan', 'BranchType': 'Sub Post Office', 'DeliveryStatus': 'Non-Delivery', 'Circle': 'Delhi', 'District': 'Central Delhi', 'Division': 'New Delhi Central', 'Region': 'Delhi', 'Block': 'New Delhi', 'State': 'Delhi', 'Country': 'India', 'Pincode': '110011'}]
+    [{'Name': 'Nirman Bhawan', 'BranchType': 'PO', 'DeliveryStatus': 'Delivery', 
+      'Circle': 'Delhi Circle', 'District': 'NEW DELHI', 'Division': 'New Delhi Central Division', 
+      'Region': 'Delhi Region', 'State': 'DELHI', 'Pincode': 110011,
+      'Latitude': 28.6108611, 'Longitude': 77.2148611},
+     {'Name': 'Udyog Bhawan', 'BranchType': 'PO', 'DeliveryStatus': 'Non Delivery', 
+      'Circle': 'Delhi Circle', 'District': 'NEW DELHI', 'Division': 'New Delhi Central Division',
+      'Region': 'Delhi Region', 'State': 'DELHI', 'Pincode': 110011,
+      'Latitude': 28.6111111, 'Longitude': 77.2127500}]
 
 
 2. Valid Pincode

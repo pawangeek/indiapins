@@ -26,12 +26,16 @@ All notable changes to indiapins will be documented in this file.
 - 92.7% records include GPS coordinates (Latitude/Longitude)
 - All data uses consistent capitalized key format
 
+### Data Structure Changes
+- **Removed fields:** Block and Country (not available in new data source)
+- **Available fields:** Circle, Region, Division, Name, Pincode, BranchType, DeliveryStatus, District, State, Latitude, Longitude
+
 ## [1.0.4] - 2025-01-26
 
 ### Added
 - Added new pins
 
-## [1.0.1] - 2024-08-10
+## [1.0.2] - 2024-08-10
 
 ### Added
 - Added latest libs
