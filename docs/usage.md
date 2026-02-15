@@ -1,45 +1,106 @@
 # Usage
 
-To use indiapins in a project::
+To use indiapins in a project:
 
-```
+```python
 import indiapins
 ```
 
-Exact Match
-------------
-To fetch all details of a pin code
+## Available Functions
 
-```
+### Exact Match
+
+Fetch all details of a pincode - returns a list of dictionaries containing complete information.
+
+```python
 indiapins.matching('110011')
-
-[{'Name': 'Udyog Bhawan', 'BranchType': 'PO', 'DeliveryStatus': 'Non Delivery', 'Circle': 'Delhi', 'District': 'New Delhi', 'Division': 'New Delhi Central Division', 'Region': 'DivReportingCircle', 'Block': 'Delhi', 'State': 'Delhi', 'Country': 'India', 'Pincode': 110011, 'Latitude': 28.6111111, 'Longitude': '77.2127500'},
-{'Name': 'Nirman Bhawan', 'BranchType': 'PO', 'DeliveryStatus': 'Delivery', 'Circle': 'Delhi', 'District': 'New Delhi', 'Division': 'New Delhi Central Division', 'Region': 'DivReportingCircle', 'Block': 'Delhi', 'State': 'Delhi', 'Country': 'India', 'Pincode': 110011, 'Latitude': 28.6108611, 'Longitude': '77.2148611'}]
-
 ```
 
-Valid Pincode
---------------
+**Returns:**
+```python
+[{'Name': 'Udyog Bhawan', 'BranchType': 'PO', 'DeliveryStatus': 'Non Delivery', 
+  'Circle': 'Delhi', 'District': 'New Delhi', 'Division': 'New Delhi Central Division', 
+  'Region': 'DivReportingCircle', 'State': 'Delhi', 'Pincode': 110011, 
+  'Latitude': 28.6111111, 'Longitude': 77.2127500},
+ {'Name': 'Nirman Bhawan', 'BranchType': 'PO', 'DeliveryStatus': 'Delivery', 
+  'Circle': 'Delhi', 'District': 'New Delhi', 'Division': 'New Delhi Central Division', 
+  'Region': 'DivReportingCircle', 'State': 'Delhi', 'Pincode': 110011, 
+  'Latitude': 28.6108611, 'Longitude': 77.2148611'}]
 ```
+
+### Valid Pincode
+
+Check if a pincode is valid and exists in the database.
+
+```python
 indiapins.isvalid('110011')
+```
 
+**Returns:**
+```python
 True
 ```
 
-District by Pincode
--------------------------
-```
-indiapins.districtmatch('302005')
+### District by Pincode
 
+Get the district name(s) for a given pincode.
+
+```python
+indiapins.districtmatch('302005')
+```
+
+**Returns:**
+```python
 'Jaipur'
 ```
 
-Coordinates
------------
-```
+### Coordinates
+
+Fetch latitude and longitude coordinates for all locations with the given pincode.
+
+```python
 indiapins.coordinates('110011')
-
-{'Udyog Bhawan': {'latitude': '28.6111111', 'longitude': '77.2127500'},
-'Nirman Bhawan': {'latitude': '28.6108611', 'longitude': '77.2148611'}}
-
 ```
+
+**Returns:**
+```python
+{'Udyog Bhawan': {'latitude': '28.6111111', 'longitude': '77.2127500'},
+ 'Nirman Bhawan': {'latitude': '28.6108611', 'longitude': '77.2148611'}}
+```
+
+**Note:** Locations without valid coordinates are automatically excluded from results.
+
+## Data Format
+
+Each pincode record contains the following fields:
+
+- **Name** - Office/branch name
+- **BranchType** - Type of post office (BO, SO, PO, etc.)
+- **DeliveryStatus** - Delivery or Non Delivery
+- **Circle** - Postal circle name
+- **District** - District name
+- **Division** - Division name
+- **Region** - Region name
+- **State** - State name
+- **Pincode** - 6-digit pincode (integer)
+- **Latitude** - Latitude coordinate (float or null)
+- **Longitude** - Longitude coordinate (float or null)
+
+## Error Handling
+
+All functions that accept pincodes will validate the input:
+
+```python
+# Pincode must be a string of 6 digits
+indiapins.matching('123456')  # Valid
+indiapins.matching(123456)     # Raises TypeError
+indiapins.matching('12345')    # Raises ValueError
+indiapins.matching('ABCDEF')   # Raises ValueError
+```
+
+## Database Statistics
+
+- **Total Records:** 165,627 pincodes
+- **Coverage:** All Indian states and union territories
+- **Last Updated:** February 2026
+- **Coordinates:** 92.7% of records include GPS coordinates

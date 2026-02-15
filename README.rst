@@ -21,7 +21,7 @@ indiapins
 
 **Indiapins is a Python package for getting the places tagged to particular Indian pincode**
 
-**Data is last updated of 26, Jan, 2025, with 157191 area pin codes**
+**Data is last updated February 15, 2026, with 165,627 area pin codes**
 
 * Free software: MIT license
 * Documentation: https://pawangeek.github.io/indiapins/

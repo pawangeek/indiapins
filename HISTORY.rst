@@ -1,6 +1,13 @@
 =======
 History
 =======
+1.0.5 (2026-02-15)
+------------------
+
+* Fixed KeyError bug caused by inconsistent key casing in data
+* Updated pincode database with 8,436 new records (165,627 total)
+* Enhanced coordinates and district matching functions
+
 1.0.4 (2025-01-26)
 ------------------
 
