@@ -2,7 +2,7 @@
 
 __author__ = """Pawan Kumar Jain"""
 __email__ = 'pawanjain.432@gmail.com'
-__version__ = '1.0.4'
+__version__ = '1.0.5'
 
 import bz2
 import json
@@ -80,7 +80,7 @@ def districtmatch(zipcode, zips=None):
     if zips is None:
         zips = _zips
 
-    districts = list(set([z['District'] for z in zips if z['Pincode'] == zipcode]))
+    districts = list(set([z['District'] for z in zips if str(z['Pincode']) == zipcode]))
 
     if len(districts) == 0:
         raise ValueError('Invalid Pincode, Pincode not in database')
@@ -96,6 +96,7 @@ def coordinates(zipcode):
 
     for matches in match_list:
         name, latitude, longitude = matches['Name'], matches['Latitude'], matches['Longitude']
-        coordinates_dict[name] = {"latitude": str(latitude), "longitude": str(longitude)}
+        if latitude is not None and longitude is not None:
+            coordinates_dict[name] = {"latitude": str(latitude), "longitude": str(longitude)}
 
     return coordinates_dict
