@@ -9,44 +9,27 @@ on:
 
 jobs:
   create_release:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
 
-      - name: Install dependencies
-        run: pip install -r requirements_dev.txt
+      - name: Build package
+        run: uv build
 
-      - name: Install pypa/build
-        run: >-
-            python3 -m
-            pip install
-            build
-            --user
-
-      - name: Build a binary wheel and a source tarball
-        run: >-
-            python3 -m
-            build
-            --sdist
-            --wheel
-            --outdir dist/
-
-      - name: Check Version
+      - name: Get version
         id: check-version
         run: |
-              echo version=$(python3 setup.py --version) >> $GITHUB_OUTPUT
+          echo version=$(uv run python -c "import importlib.metadata; print(importlib.metadata.version('indiapins'))") >> $GITHUB_OUTPUT
 
       - name: Create GitHub Release
         id: create_release
         uses: ncipollo/release-action@v1
-
         with:
           tag: v${{ steps.check-version.outputs.version }}
           artifacts: "dist/*"
