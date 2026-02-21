@@ -6,6 +6,9 @@ on:
       - closed
     branches:
       - master
+  push:
+    branches:
+      - master
 
 permissions:
   contents: write
