@@ -53,11 +53,11 @@ test: ## run tests quickly with the default Python
 	uv run pytest
 
 test-all: ## run tests on all Python versions with uv
-	uv run --python 3.9 pytest
 	uv run --python 3.10 pytest
 	uv run --python 3.11 pytest
 	uv run --python 3.12 pytest
 	uv run --python 3.13 pytest
+	uv run --python 3.14 pytest
 
 coverage: ## check code coverage quickly with the default Python
 	uv run coverage run --source indiapins -m pytest

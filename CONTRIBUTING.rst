@@ -64,11 +64,10 @@ Ready to contribute? Here's how to set up `indiapins` for local development.
 
     $ git clone git@github.com:your_name_here/indiapins.git
 
-3. Install your local copy into a virtualenv. Assuming you have virtualenvwrapper installed, this is how you set up your fork for local development::
+3. Install dependencies using uv::
 
-    $ mkvirtualenv indiapins
     $ cd indiapins/
-    $ python setup.py develop
+    $ uv sync
 
 4. Create a branch for local development::
 
@@ -77,13 +76,14 @@ Ready to contribute? Here's how to set up `indiapins` for local development.
    Now you can make your changes locally.
 
 5. When you're done making changes, check that your changes pass flake8 and the
-   tests, including testing other Python versions with tox::
+   tests::
 
-    $ flake8 indiapins tests
-    $ python setup.py test or pytest
-    $ tox
+    $ uv run flake8 indiapins tests
+    $ uv run pytest
 
-   To get flake8 and tox, just pip install them into your virtualenv.
+   To run tests across all supported Python versions::
+
+    $ make test-all
 
 6. Commit your changes and push your branch to GitHub::
 
@@ -102,7 +102,7 @@ Before you submit a pull request, check that it meets these guidelines:
 2. If the pull request adds functionality, the docs should be updated. Put
    your new functionality into a function with a docstring, and add the
    feature to the list in README.rst.
-3. The pull request should work for Python 3.8, 3.9, 3.10, 3.11 and for PyPy.
+3. The pull request should work for Python 3.10, 3.11, 3.12, 3.13, 3.14 and for PyPy.
 
 Tips
 ----
@@ -123,4 +123,4 @@ $ bump2version patch # possible: major / minor / patch
 $ git push
 $ git push --tags
 
-Travis will then deploy to PyPI if tests pass.
+GitHub Actions will then deploy to PyPI if tests pass.
