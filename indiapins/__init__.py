@@ -56,7 +56,9 @@ def _resource_path(relative_path):
     return os.path.join(base_path, relative_path)
 
 
-_zips_json = _resource_path(os.path.join(os.path.dirname(os.path.abspath(__file__)), "pins.json.bz2"))
+_zips_json = _resource_path(
+    os.path.join(os.path.dirname(os.path.abspath(__file__)), "pins.json.bz2")
+)
 with bz2_open(_zips_json, "rt") as f:
     _zips = [json.loads(line) for i, line in enumerate(f)]
 

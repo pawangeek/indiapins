@@ -4,7 +4,6 @@
 
 import pytest
 
-import indiapins
 from indiapins import matching, isvalid, districtmatch, coordinates, _clean
 
 
@@ -405,10 +404,12 @@ class TestRecordFields:
         valid_types = {"BO", "SO", "HO", "PO"}
         for record in result:
             # BranchType should be one of known types
-            assert record["BranchType"] in valid_types, f"Unknown BranchType: {record['BranchType']}"
+            bt = record["BranchType"]
+            assert bt in valid_types, f"Unknown BranchType: {bt}"
 
     def test_delivery_status_values(self, delhi_pincode):
         result = matching(delhi_pincode)
         valid_statuses = {"Delivery", "Non Delivery"}
         for record in result:
-            assert record["DeliveryStatus"] in valid_statuses, f"Unknown status: {record['DeliveryStatus']}"
+            ds = record["DeliveryStatus"]
+            assert ds in valid_statuses, f"Unknown status: {ds}"
