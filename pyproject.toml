@@ -1,10 +1,10 @@
 [project]
 name = "indiapins"
-version = "1.0.5"
+version = "1.0.6"
 description = "Python package for mapping pins to the place where it belong"
 readme = "README.rst"
 license = { text = "MIT" }
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 authors = [
     { name = "Pawan Kumar Jain", email = "pawanjain.432@gmail.com" },
 ]
@@ -15,11 +15,11 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Natural Language :: English",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "Topic :: Scientific/Engineering",
 ]
 dependencies = [

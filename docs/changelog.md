@@ -2,6 +2,13 @@
 
 All notable changes to indiapins will be documented in this file.
 
+## [1.0.6] - 2026-02-21
+
+### Changed
+- Updated all dependencies to latest versions (click 8.3.1, pytest 9.0.2, flake8 7.3.0, coverage 7.13.4, twine 6.2.0, mkdocs 1.6.1)
+- Dropped Python 3.9 support
+- Added Python 3.14 support
+
 ## [1.0.5] - 2026-02-15
 
 ### Fixed
