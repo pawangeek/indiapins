@@ -10,9 +10,9 @@ indiapins
     :target: https://www.python.org/downloads
     :alt: Python versions
 
-.. image:: https://ci.appveyor.com/api/projects/status/43hcwr4me6vjb1fg?svg=true
-        :target: https://ci.appveyor.com/project/pawangeek/indiapins
-        :alt: Build
+.. image:: https://github.com/pawangeek/indiapins/actions/workflows/ci.yml/badge.svg
+        :target: https://github.com/pawangeek/indiapins/actions/workflows/ci.yml
+        :alt: CI
 
 .. image:: https://static.pepy.tech/badge/indiapins
      :target: https://pepy.tech/project/indiapins
@@ -21,7 +21,7 @@ indiapins
 
 **Indiapins is a Python package for getting the places tagged to particular Indian pincode**
 
-**Data is last updated February 15, 2026, with 165,627 area pin codes**
+**Data is last updated February 21, 2026, with 165,627 area pin codes**
 
 * Free software: MIT license
 * Documentation: https://pawangeek.github.io/indiapins/
@@ -38,19 +38,18 @@ Install the plugin using 'pip':
 
    $ pip install indiapins
 
-Alternatively, install from source by cloning this repo then running
-'setup.py':
+Alternatively, install from source by cloning this repo:
 
 .. code-block:: shell
 
-   $ python setup.py install
+   $ pip install .
 
 
 Features
 --------
 * Get all the mappings of given pins
 * The Python sqlite3 module is not required, so easily to use in Clouds (no additional dependencies)
-* Works with 3.9, 3.10, 3.11, 3.12, 3.13 and PyPy
+* Works with 3.10, 3.11, 3.12, 3.13, 3.14 and PyPy
 * Cross-platform: Windows, Mac, and Linux are officially supported.
 * Simple usage and very fast results
 

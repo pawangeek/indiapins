@@ -1,6 +1,12 @@
 =======
 History
 =======
+1.0.6 (2026-02-21)
+------------------
+
+* Updated all dependencies to latest versions
+* Dropped Python 3.9 support, added Python 3.14 support
+
 1.0.5 (2026-02-15)
 ------------------
 
