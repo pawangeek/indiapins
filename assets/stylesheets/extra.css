@@ -1,0 +1,48 @@
+/* Consistent docs styling inspired by zensical/docs */
+
+.md-typeset h1 {
+  margin-bottom: 0.4rem;
+}
+
+.md-typeset h2 {
+  margin-top: 2rem;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  padding-bottom: 0.35rem;
+}
+
+.md-typeset h3 {
+  margin-top: 1.4rem;
+}
+
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: 0.65rem;
+}
+
+.md-typeset code {
+  border-radius: 0.35rem;
+}
+
+.md-typeset pre > code {
+  border-radius: 0.65rem;
+}
+
+.md-typeset table:not([class]) {
+  border-radius: 0.65rem;
+  overflow: hidden;
+}
+
+.md-typeset table:not([class]) th {
+  white-space: nowrap;
+}
+
+/* Light emphasis for list-heavy sections */
+.md-typeset ul li,
+.md-typeset ol li {
+  margin-bottom: 0.2rem;
+}
+
+/* Keep body width readable for docs prose */
+.md-content__inner {
+  max-width: 58rem;
+}
