@@ -51,7 +51,12 @@ def _clean_region_value(value, field_name):
 
 
 def _normalize_for_compare(value, case_sensitive=False):
-    return value if case_sensitive else value.lower()
+    if not isinstance(value, str):
+        return None
+    normalized = value.strip()
+    if not normalized:
+        return None
+    return normalized if case_sensitive else normalized.lower()
 
 
 def _clean_prefix(prefix):
@@ -79,7 +84,15 @@ def _clean_bulk_pincodes(pincodes):
 
 
 def _values_for_pincode(zipcode, key, zips):
-    values = sorted({z[key] for z in zips if str(z["Pincode"]) == zipcode})
+    values = sorted(
+        {
+            value.strip()
+            for z in zips
+            if str(z["Pincode"]) == zipcode
+            for value in [z.get(key)]
+            if isinstance(value, str) and value.strip()
+        }
+    )
     if len(values) == 0:
         raise ValueError(_unknown_pincode_error)
     return values
@@ -146,7 +159,14 @@ def coordinates(zipcode):
 def states(zips=None):
     if zips is None:
         zips = _zips
-    return sorted({z["State"] for z in zips})
+    return sorted(
+        {
+            state.strip()
+            for z in zips
+            for state in [z.get("State")]
+            if isinstance(state, str) and state.strip()
+        }
+    )
 
 
 def districts_in_state(state, case_sensitive=False, zips=None):
@@ -156,9 +176,11 @@ def districts_in_state(state, case_sensitive=False, zips=None):
     clean_state = _clean_region_value(state, "state")
     match_state = _normalize_for_compare(clean_state, case_sensitive=case_sensitive)
     districts = {
-        z["District"]
+        z["District"].strip()
         for z in zips
-        if _normalize_for_compare(z["State"], case_sensitive=case_sensitive) == match_state
+        if _normalize_for_compare(z.get("State"), case_sensitive=case_sensitive) == match_state
+        and isinstance(z.get("District"), str)
+        and z["District"].strip()
     }
     return sorted(districts)
 
@@ -172,7 +194,7 @@ def pincodes_in_state(state, case_sensitive=False, zips=None):
     pincodes = {
         str(z["Pincode"])
         for z in zips
-        if _normalize_for_compare(z["State"], case_sensitive=case_sensitive) == match_state
+        if _normalize_for_compare(z.get("State"), case_sensitive=case_sensitive) == match_state
     }
     return sorted(pincodes)
 
@@ -186,7 +208,7 @@ def pincodes_in_district(district, case_sensitive=False, zips=None):
     pincodes = {
         str(z["Pincode"])
         for z in zips
-        if _normalize_for_compare(z["District"], case_sensitive=case_sensitive)
+        if _normalize_for_compare(z.get("District"), case_sensitive=case_sensitive)
         == match_district
     }
     return sorted(pincodes)
