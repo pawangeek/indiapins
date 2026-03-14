@@ -12,13 +12,13 @@
         <meta name="author" content="Pawan Kumar Jain">
       
       
-        <link rel="canonical" href="https://pawangeek.github.io/indiapins/contributing/">
+        <link rel="canonical" href="https://pawangeek.github.io/indiapins/usage-geo/">
       
       
-        <link rel="prev" href="../usage-geo/">
+        <link rel="prev" href="../usage-core/">
       
       
-        <link rel="next" href="../changelog/">
+        <link rel="next" href="../contributing/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>Contributing - Indiapins</title>
+        <title>Geospatial Usage - Indiapins</title>
       
     
     
@@ -97,7 +97,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#contributing" class="md-skip">
+        <a href="#geospatial-usage" class="md-skip">
           Skip to content
         </a>
       
@@ -131,7 +131,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Contributing
+              Geospatial Usage
             
           </span>
         </div>
@@ -277,9 +277,11 @@
   
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href="../usage-geo/" class="md-tabs__link">
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="././" class="md-tabs__link">
         
   
   Geospatial Usage
@@ -293,11 +295,9 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="././" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../contributing/" class="md-tabs__link">
         
   
   Contributing
@@ -480,33 +480,6 @@
       
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../usage-geo/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Geospatial Usage
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
     
   
   
@@ -526,7 +499,7 @@
   <span class="md-ellipsis">
     
   
-    Contributing
+    Geospatial Usage
   
 
     
@@ -544,7 +517,7 @@
   <span class="md-ellipsis">
     
   
-    Contributing
+    Geospatial Usage
   
 
     
@@ -571,46 +544,196 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#types-of-contributions" class="md-nav__link">
+  <a href="#available-geospatial-functions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Types of Contributions
+        Available Geospatial Functions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Available Geospatial Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#distance-between-two-pincodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Distance between two pincodes
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#pull-request-guidelines" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#nearest-pincodes-to-a-location" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pull Request Guidelines
+        Nearest pincodes to a location
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#tips" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#nearest-pincodes-from-a-pincode" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tips
+        Nearest pincodes from a pincode
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#deploying" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#pincodes-within-a-radius" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Deploying
+        Pincodes within a radius
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delivery-offices-within-a-radius" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Delivery offices within a radius
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bearing-and-midpoint-between-pincodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bearing and midpoint between pincodes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distance-matrix-for-multiple-pincodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Distance matrix for multiple pincodes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input-and-validation-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Input and Validation Rules
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Input and Validation Rules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pincode-based-inputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pincode-based inputs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#numeric-inputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Numeric inputs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#missing-coordinates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Missing coordinates
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical Examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Practical Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#serviceability-check-around-a-branch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Serviceability check around a branch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nearby-delivery-offices-for-dispatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nearby delivery offices for dispatch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distance-matrix-for-routing-model-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Distance matrix for routing model input
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -618,6 +741,33 @@
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -677,46 +827,196 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#types-of-contributions" class="md-nav__link">
+  <a href="#available-geospatial-functions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Types of Contributions
+        Available Geospatial Functions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Available Geospatial Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#distance-between-two-pincodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Distance between two pincodes
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#pull-request-guidelines" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#nearest-pincodes-to-a-location" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pull Request Guidelines
+        Nearest pincodes to a location
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#tips" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#nearest-pincodes-from-a-pincode" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tips
+        Nearest pincodes from a pincode
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#deploying" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#pincodes-within-a-radius" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Deploying
+        Pincodes within a radius
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delivery-offices-within-a-radius" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Delivery offices within a radius
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bearing-and-midpoint-between-pincodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bearing and midpoint between pincodes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distance-matrix-for-multiple-pincodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Distance matrix for multiple pincodes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input-and-validation-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Input and Validation Rules
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Input and Validation Rules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pincode-based-inputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pincode-based inputs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#numeric-inputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Numeric inputs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#missing-coordinates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Missing coordinates
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical Examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Practical Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#serviceability-check-around-a-branch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Serviceability check around a branch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nearby-delivery-offices-for-dispatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nearby delivery offices for dispatch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distance-matrix-for-routing-model-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Distance matrix for routing model input
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -743,7 +1043,7 @@
                 
                   
   
-    <a href="https://github.com/pawangeek/indiapins/edit/master/docs/contributing.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/pawangeek/indiapins/edit/master/docs/usage-geo.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-file-pen" viewBox="0 0 24 24"><path d="M12.659 22H18a2 2 0 0 0 2-2V8a2.4 2.4 0 0 0-.706-1.706l-3.588-3.588A2.4 2.4 0 0 0 14 2H6a2 2 0 0 0-2 2v9.34"/><path d="M14 2v5a1 1 0 0 0 1 1h5M10.378 12.622a1 1 0 0 1 3 3.003L8.36 20.637a2 2 0 0 1-.854.506l-2.867.837a.5.5 0 0 1-.62-.62l.836-2.869a2 2 0 0 1 .506-.853z"/></svg>
     </a>
@@ -752,101 +1052,93 @@
     
       
     
-    <a href="https://github.com/pawangeek/indiapins/raw/master/docs/contributing.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/pawangeek/indiapins/raw/master/docs/usage-geo.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-file-code-2" viewBox="0 0 24 24"><path d="M4 12.15V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2h-3.35"/><path d="M14 2v5a1 1 0 0 0 1 1h5M5 16l-3 3 3 3M9 22l3-3-3-3"/></svg>
     </a>
   
 
 
-<h1 id="contributing">Contributing<a class="headerlink" href="#contributing" title="Permanent link">&para;</a></h1>
-<p>Contributions are welcome and greatly appreciated. Every little bit helps, and
-credit is always given.</p>
-<p>You can contribute in many ways:</p>
-<h2 id="types-of-contributions">Types of Contributions<a class="headerlink" href="#types-of-contributions" title="Permanent link">&para;</a></h2>
-<p><strong>Report Bugs</strong></p>
-<p>Report bugs at <a href="https://github.com/pawangeek/indiapins/issues">GitHub Issues</a>.</p>
-<p>If you are reporting a bug, please include:</p>
-<ul>
-<li>Your operating system name and version.</li>
-<li>Any details about your local setup that might be helpful in troubleshooting.</li>
-<li>Detailed steps to reproduce the bug.</li>
-</ul>
-<p><strong>Fix Bugs</strong></p>
-<p>Look through issues tagged with <code>bug</code> and <code>help wanted</code>.</p>
-<p><strong>Implement Features</strong></p>
-<p>Look through issues tagged with <code>enhancement</code> and <code>help wanted</code>.</p>
-<p><strong>Write Documentation</strong></p>
-<p><code>indiapins</code> could always use more documentation, whether as part of the
-official docs, in docstrings, or in blog posts and articles.</p>
-<p><strong>Submit Feedback</strong></p>
-<p>The best way to send feedback is to file an issue at
-<a href="https://github.com/pawangeek/indiapins/issues">GitHub Issues</a>.</p>
-<p>If you are proposing a feature:</p>
-<ul>
-<li>Explain in detail how it would work.</li>
-<li>Keep the scope as narrow as possible, to make it easier to implement.</li>
-<li>Remember this is a volunteer-driven project.</li>
-</ul>
-<p><strong>Get Started!</strong></p>
-<p>Ready to contribute? Here's how to set up <code>indiapins</code> for local development.</p>
-<ol>
-<li>Fork the <code>indiapins</code> repo on GitHub.</li>
-<li>Clone your fork locally:
-    <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>$ git clone git@github.com:your_name_here/indiapins.git
-</span></code></pre></div></li>
-<li>Install dependencies using uv:
-    <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$ cd indiapins/
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>$ uv sync
-</span></code></pre></div></li>
-<li>
-<p>Create a branch for local development:
-    <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$ git checkout -b name-of-your-bugfix-or-feature
+<h1 id="geospatial-usage">Geospatial Usage<a class="headerlink" href="#geospatial-usage" title="Permanent link">&para;</a></h1>
+<p>Use <code>indiapins</code> geospatial APIs when you need nearest-pincode queries, radius
+searches, bearings, and distance analytics.</p>
+<p>Geospatial helpers are powered by <code>geodistpy</code>.</p>
+<h2 id="available-geospatial-functions">Available Geospatial Functions<a class="headerlink" href="#available-geospatial-functions" title="Permanent link">&para;</a></h2>
+<h3 id="distance-between-two-pincodes">Distance between two pincodes<a class="headerlink" href="#distance-between-two-pincodes" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">indiapins</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="s2">&quot;110001&quot;</span><span class="p">,</span> <span class="s2">&quot;400001&quot;</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;km&quot;</span><span class="p">)</span>
 </span></code></pre></div>
-   Now you can make your changes locally.</p>
-</li>
-<li>
-<p>When you're done making changes, check that your changes pass flake8 and the
-   tests:
-    <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$ uv run flake8 indiapins tests
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>$ uv run pytest
+<p>Returns a float distance in the selected metric (<code>meter</code>, <code>km</code>, <code>mile</code>, <code>nmi</code>).</p>
+<h3 id="nearest-pincodes-to-a-location">Nearest pincodes to a location<a class="headerlink" href="#nearest-pincodes-to-a-location" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">indiapins</span><span class="o">.</span><span class="n">nearest_pincodes</span><span class="p">(</span><span class="mf">28.6139</span><span class="p">,</span> <span class="mf">77.2090</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 </span></code></pre></div>
-   To run tests across all supported Python versions:
-    <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>$ make test-all
-</span></code></pre></div></p>
-</li>
-<li>
-<p>Commit your changes and push your branch to GitHub:
-    <div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>$ git add .
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>$ git commit -m &quot;Your detailed description of your changes.&quot;
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>$ git push origin name-of-your-bugfix-or-feature
-</span></code></pre></div></p>
-</li>
-<li>Submit a pull request through the GitHub website.</li>
-</ol>
-<p><strong>Pull Request Guidelines</strong></p>
-<h2 id="pull-request-guidelines">Pull Request Guidelines<a class="headerlink" href="#pull-request-guidelines" title="Permanent link">&para;</a></h2>
-<p>Before you submit a pull request, check that it meets these guidelines:</p>
-<ol>
-<li>The pull request should include tests.</li>
-<li>If the pull request adds functionality, the docs should be updated. Put
-   your new functionality into a function with a docstring, and add the
-   feature to the list in README.rst.</li>
-<li>The pull request should work for Python 3.11, 3.12, 3.13, and 3.14.</li>
-</ol>
-<h2 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link">&para;</a></h2>
-<p>To run a subset of tests:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>$ uv run pytest tests/test_indiapins.py
-</span></code></pre></div></p>
-<h2 id="deploying">Deploying<a class="headerlink" href="#deploying" title="Permanent link">&para;</a></h2>
-<p>A reminder for the maintainers on how to deploy.
-Make sure all your changes are committed (including an entry in HISTORY.rst).
-Then run:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>$ bump2version patch # possible: major / minor / patch
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>$ git push
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>$ git push --tags
-</span></code></pre></div></p>
-<p>GitHub Actions will then deploy to PyPI if tests pass.</p>
+<p>Returns a list of dictionaries:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">[{</span><span class="s2">&quot;pincode&quot;</span><span class="p">:</span> <span class="s2">&quot;110001&quot;</span><span class="p">,</span> <span class="s2">&quot;distance&quot;</span><span class="p">:</span> <span class="mf">0.72</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;pincode&quot;</span><span class="p">:</span> <span class="s2">&quot;110002&quot;</span><span class="p">,</span> <span class="s2">&quot;distance&quot;</span><span class="p">:</span> <span class="mf">1.86</span><span class="p">}]</span>
+</span></code></pre></div>
+<h3 id="nearest-pincodes-from-a-pincode">Nearest pincodes from a pincode<a class="headerlink" href="#nearest-pincodes-from-a-pincode" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">indiapins</span><span class="o">.</span><span class="n">nearest_to_pincode</span><span class="p">(</span><span class="s2">&quot;110001&quot;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Returns nearest neighboring pincodes (excluding the source pincode).</p>
+<h3 id="pincodes-within-a-radius">Pincodes within a radius<a class="headerlink" href="#pincodes-within-a-radius" title="Permanent link">&para;</a></h3>
+<p>Center can be either <code>(lat, lon)</code> or a pincode string.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">indiapins</span><span class="o">.</span><span class="n">pincodes_in_radius</span><span class="p">((</span><span class="mf">28.6139</span><span class="p">,</span> <span class="mf">77.2090</span><span class="p">),</span> <span class="n">radius_km</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">indiapins</span><span class="o">.</span><span class="n">pincodes_in_radius</span><span class="p">(</span><span class="s2">&quot;110001&quot;</span><span class="p">,</span> <span class="n">radius_km</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Returns:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="p">[{</span><span class="s2">&quot;pincode&quot;</span><span class="p">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span> <span class="s2">&quot;distance&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">}]</span>
+</span></code></pre></div>
+<h3 id="delivery-offices-within-a-radius">Delivery offices within a radius<a class="headerlink" href="#delivery-offices-within-a-radius" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">indiapins</span><span class="o">.</span><span class="n">delivery_offices_in_radius</span><span class="p">(</span><span class="s2">&quot;110001&quot;</span><span class="p">,</span> <span class="n">radius_km</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Returns delivery-enabled offices only, each with:</p>
+<ul>
+<li><code>name</code></li>
+<li><code>pincode</code></li>
+<li><code>district</code></li>
+<li><code>state</code></li>
+<li><code>latitude</code></li>
+<li><code>longitude</code></li>
+<li><code>distance</code></li>
+</ul>
+<h3 id="bearing-and-midpoint-between-pincodes">Bearing and midpoint between pincodes<a class="headerlink" href="#bearing-and-midpoint-between-pincodes" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">indiapins</span><span class="o">.</span><span class="n">bearing</span><span class="p">(</span><span class="s2">&quot;110001&quot;</span><span class="p">,</span> <span class="s2">&quot;400001&quot;</span><span class="p">)</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">indiapins</span><span class="o">.</span><span class="n">midpoint</span><span class="p">(</span><span class="s2">&quot;110001&quot;</span><span class="p">,</span> <span class="s2">&quot;400001&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<ul>
+<li><code>bearing()</code> returns angle in degrees (<code>0</code> to <code>&lt;360</code>)</li>
+<li><code>midpoint()</code> returns <code>(latitude, longitude)</code> tuple</li>
+</ul>
+<h3 id="distance-matrix-for-multiple-pincodes">Distance matrix for multiple pincodes<a class="headerlink" href="#distance-matrix-for-multiple-pincodes" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">matrix</span> <span class="o">=</span> <span class="n">indiapins</span><span class="o">.</span><span class="n">distance_matrix</span><span class="p">([</span><span class="s2">&quot;110001&quot;</span><span class="p">,</span> <span class="s2">&quot;400001&quot;</span><span class="p">,</span> <span class="s2">&quot;560001&quot;</span><span class="p">],</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;km&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Returns a pairwise distance matrix (<code>numpy.ndarray</code>) in the requested metric.</p>
+<h2 id="input-and-validation-rules">Input and Validation Rules<a class="headerlink" href="#input-and-validation-rules" title="Permanent link">&para;</a></h2>
+<h3 id="pincode-based-inputs">Pincode-based inputs<a class="headerlink" href="#pincode-based-inputs" title="Permanent link">&para;</a></h3>
+<p>Functions that accept pincodes validate them as:</p>
+<ul>
+<li>non-empty string</li>
+<li>length exactly 6</li>
+<li>digits only (<code>0-9</code>)</li>
+</ul>
+<h3 id="numeric-inputs">Numeric inputs<a class="headerlink" href="#numeric-inputs" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>k</code> must be a positive integer</li>
+<li><code>radius_km</code> must be a positive number</li>
+<li><code>metric</code> must be one of: <code>meter</code>, <code>km</code>, <code>mile</code>, <code>nmi</code></li>
+</ul>
+<h3 id="missing-coordinates">Missing coordinates<a class="headerlink" href="#missing-coordinates" title="Permanent link">&para;</a></h3>
+<p>If a pincode has no usable coordinates, geospatial methods raise <code>ValueError</code>.
+Internally, <code>indiapins</code> also tolerates coordinate rows stored as DMS-like text.</p>
+<h2 id="practical-examples">Practical Examples<a class="headerlink" href="#practical-examples" title="Permanent link">&para;</a></h2>
+<h3 id="serviceability-check-around-a-branch">Serviceability check around a branch<a class="headerlink" href="#serviceability-check-around-a-branch" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">serviceable</span> <span class="o">=</span> <span class="n">indiapins</span><span class="o">.</span><span class="n">pincodes_in_radius</span><span class="p">(</span><span class="s2">&quot;560001&quot;</span><span class="p">,</span> <span class="n">radius_km</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="nearby-delivery-offices-for-dispatch">Nearby delivery offices for dispatch<a class="headerlink" href="#nearby-delivery-offices-for-dispatch" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">offices</span> <span class="o">=</span> <span class="n">indiapins</span><span class="o">.</span><span class="n">delivery_offices_in_radius</span><span class="p">((</span><span class="mf">12.9716</span><span class="p">,</span> <span class="mf">77.5946</span><span class="p">),</span> <span class="n">radius_km</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="distance-matrix-for-routing-model-input">Distance matrix for routing model input<a class="headerlink" href="#distance-matrix-for-routing-model-input" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">pins</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;110001&quot;</span><span class="p">,</span> <span class="s2">&quot;400001&quot;</span><span class="p">,</span> <span class="s2">&quot;560001&quot;</span><span class="p">,</span> <span class="s2">&quot;600001&quot;</span><span class="p">]</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">dm</span> <span class="o">=</span> <span class="n">indiapins</span><span class="o">.</span><span class="n">distance_matrix</span><span class="p">(</span><span class="n">pins</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;km&quot;</span><span class="p">)</span>
+</span></code></pre></div>
 
 
 
@@ -886,7 +1178,7 @@ Then run:
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../usage-geo/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Geospatial Usage">
+          <a href="../usage-core/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Core Usage">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
@@ -896,20 +1188,20 @@ Then run:
                 Previous
               </span>
               <div class="md-ellipsis">
-                Geospatial Usage
+                Core Usage
               </div>
             </div>
           </a>
         
         
           
-          <a href="../changelog/" class="md-footer__link md-footer__link--next" aria-label="Next: Changelog">
+          <a href="../contributing/" class="md-footer__link md-footer__link--next" aria-label="Next: Contributing">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Changelog
+                Contributing
               </div>
             </div>
             <div class="md-footer__button md-icon">

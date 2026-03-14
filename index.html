@@ -263,6 +263,38 @@
   
   
     <li class="md-tabs__item">
+      <a href="./usage-core/" class="md-tabs__link">
+        
+  
+  Core Usage
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="./usage-geo/" class="md-tabs__link">
+        
+  
+  Geospatial Usage
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
       <a href="./contributing/" class="md-tabs__link">
         
   
@@ -446,10 +478,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#whats-new-in-v106" class="md-nav__link">
+  <a href="#whats-new-in-v110" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What's New in v1.0.6
+        What's New in v1.1.0
       
     </span>
   </a>
@@ -506,6 +538,60 @@
     
   
     Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="./usage-core/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="./usage-geo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Geospatial Usage
   
 
     
@@ -644,10 +730,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#whats-new-in-v106" class="md-nav__link">
+  <a href="#whats-new-in-v110" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What's New in v1.0.6
+        What's New in v1.1.0
       
     </span>
   </a>
@@ -711,6 +797,9 @@ latest February 2026 data containing <strong>165,627 pincode records</strong> ac
 <li>Get coordinates related to that Pincode</li>
 <li>Get all details of a pincode</li>
 <li>Get name of district by pincode</li>
+<li>Geodesic distance between pincodes</li>
+<li>Nearest pincodes from coordinates or source pincode</li>
+<li>Radius-based pincode and delivery-office discovery</li>
 </ul>
 <h2 id="input-rules-important">Input Rules (Important)<a class="headerlink" href="#input-rules-important" title="Permanent link">&para;</a></h2>
 <p>All pincode inputs must:</p>
@@ -727,12 +816,13 @@ latest February 2026 data containing <strong>165,627 pincode records</strong> ac
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">exists</span> <span class="o">=</span> <span class="n">indiapins</span><span class="o">.</span><span class="n">isvalid</span><span class="p">(</span><span class="s2">&quot;110001&quot;</span><span class="p">)</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">district</span> <span class="o">=</span> <span class="n">indiapins</span><span class="o">.</span><span class="n">districtmatch</span><span class="p">(</span><span class="s2">&quot;110001&quot;</span><span class="p">)</span>
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">coords</span> <span class="o">=</span> <span class="n">indiapins</span><span class="o">.</span><span class="n">coordinates</span><span class="p">(</span><span class="s2">&quot;110001&quot;</span><span class="p">)</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">nearest</span> <span class="o">=</span> <span class="n">indiapins</span><span class="o">.</span><span class="n">nearest_to_pincode</span><span class="p">(</span><span class="s2">&quot;110001&quot;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 </span></code></pre></div>
-<h2 id="whats-new-in-v106">What's New in v1.0.6<a class="headerlink" href="#whats-new-in-v106" title="Permanent link">&para;</a></h2>
+<h2 id="whats-new-in-v110">What's New in v1.1.0<a class="headerlink" href="#whats-new-in-v110" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Updated all dependencies</strong> to latest versions</li>
-<li><strong>Dropped Python 3.9 support</strong>, added <strong>Python 3.14 support</strong></li>
-<li><strong>Improved CI pipeline</strong> with updated Python version matrix</li>
+<li><strong>Added geospatial APIs</strong> powered by <code>geodistpy</code> (distance, nearest, radius, bearing, midpoint, matrix)</li>
+<li><strong>Expanded core API surface</strong> with reverse lookups, admin matchers, bulk helpers, and delivery/branch filters</li>
+<li><strong>Standardized behavior contracts</strong> for unknown vs malformed inputs and case-insensitive state/district matching by default</li>
 </ul>
 
 
