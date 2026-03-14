@@ -20,6 +20,9 @@ Currently supported operations:
 - Get coordinates related to that Pincode
 - Get all details of a pincode
 - Get name of district by pincode
+- Geodesic distance between pincodes
+- Nearest pincodes from coordinates or source pincode
+- Radius-based pincode and delivery-office discovery
 
 ## Input Rules (Important)
 
@@ -40,11 +43,12 @@ records = indiapins.matching("110001")
 exists = indiapins.isvalid("110001")
 district = indiapins.districtmatch("110001")
 coords = indiapins.coordinates("110001")
+nearest = indiapins.nearest_to_pincode("110001", k=5)
 ```
 
-## What's New in v1.0.6
+## What's New in v1.1.0
 
-- **Updated all dependencies** to latest versions
-- **Dropped Python 3.9 support**, added **Python 3.14 support**
-- **Improved CI pipeline** with updated Python version matrix
+- **Added geospatial APIs** powered by `geodistpy` (distance, nearest, radius, bearing, midpoint, matrix)
+- **Expanded core API surface** with reverse lookups, admin matchers, bulk helpers, and delivery/branch filters
+- **Standardized behavior contracts** for unknown vs malformed inputs and case-insensitive state/district matching by default
 

@@ -1,6 +1,14 @@
 =======
 History
 =======
+1.1.0 (2026-03-14)
+------------------
+
+* Added geospatial APIs powered by geodistpy
+* Added reverse lookup and bulk core APIs
+* Standardized behavior for unknown vs malformed inputs
+* Added case-insensitive state/district matching by default
+
 1.0.6 (2026-02-21)
 ------------------
 

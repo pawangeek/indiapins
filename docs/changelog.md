@@ -2,6 +2,21 @@
 
 All notable changes to `indiapins` are documented in this file.
 
+## [1.1.0] - 2026-03-14
+
+### Added
+- Added geospatial APIs powered by `geodistpy`: `distance`, `nearest_pincodes`, `nearest_to_pincode`, `pincodes_in_radius`, `delivery_offices_in_radius`, `bearing`, `midpoint`, and `distance_matrix`
+- Added centroid caching for pincode-level geospatial queries to speed up repeated nearest/radius lookups
+- Added reverse-lookup core APIs: `states`, `districts_in_state`, `pincodes_in_state`, and `pincodes_in_district`
+- Added core helpers: `statematch`, `divisionmatch`, `circlematch`, `regionmatch`, `has_delivery`, `delivery_offices`, `offices_by_branch_type`, `pincodes_by_prefix`, `isvalid_bulk`, and `matching_bulk`
+
+### Changed
+- Added `geodistpy` as a runtime dependency for geodesic calculations
+- Updated README and usage documentation with geospatial examples and API behavior
+- Split docs usage into separate core and geospatial guides for easier navigation
+- Standardized unknown-but-well-formed pincode handling: lookup/query APIs now raise `ValueError`, while `isvalid` continues to return `False`
+- Standardized state/district comparisons to be case-insensitive by default, with optional `case_sensitive=True` for exact matching
+
 ## [1.0.6] - 2026-02-21
 
 ### Changed

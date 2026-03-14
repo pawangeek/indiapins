@@ -1,6 +1,6 @@
 [project]
 name = "indiapins"
-version = "1.0.6"
+version = "1.1.0"
 description = "Python package for mapping pins to the place where it belong"
 readme = "README.rst"
 license = { text = "MIT" }
@@ -24,6 +24,7 @@ classifiers = [
 ]
 dependencies = [
     "click>=8.3.1",
+    "geodistpy",
 ]
 
 [project.scripts]

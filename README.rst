@@ -41,6 +41,16 @@ The library currently exposes four core helpers:
 * ``districtmatch(zipcode)``: get district name(s) for a pincode
 * ``coordinates(zipcode)``: get location-wise latitude/longitude values
 
+Geospatial helpers are also available:
+
+* ``distance(pin1, pin2, metric="km")``
+* ``nearest_pincodes(lat, lon, k=5, metric="km")``
+* ``nearest_to_pincode(pin, k=10, metric="km")``
+* ``pincodes_in_radius(center, radius_km)``
+* ``delivery_offices_in_radius(center, radius_km)``
+* ``bearing(pin1, pin2)`` and ``midpoint(pin1, pin2)``
+* ``distance_matrix(pincodes, metric="km")``
+
 All public functions validate the input format strictly before lookup:
 
 * pincode must be a Python ``str``
@@ -73,6 +83,7 @@ Features
 --------
 * Get all the mappings of a given pincode
 * Offline-friendly lookup from packaged compressed data
+* Geodesic distance, nearest, radius, bearing, midpoint, and matrix operations
 * No sqlite dependency required, easy to run in cloud/serverless environments
 * Works with Python 3.10, 3.11, 3.12, 3.13, 3.14 and PyPy
 * Cross-platform support: Windows, macOS, and Linux
@@ -108,6 +119,9 @@ Records include these keys:
 * ``Circle``, ``Region``, ``Division``, ``District``, ``State``
 * ``Pincode`` (integer in returned data)
 * ``Latitude`` and ``Longitude`` (float or ``None``)
+
+If the pincode is well-formed but absent in the dataset, ``matching`` raises
+``ValueError``.
 
 
 2. Valid Pincode
@@ -155,7 +169,43 @@ Notes:
 
 * Entries with missing coordinates are excluded
 * Latitude/longitude values are returned as strings for consistency
-* Unknown but well-formed pincodes return an empty dictionary
+* Unknown but well-formed pincodes raise ``ValueError``
+
+5. Geospatial Queries
+#####################
+
+Compute geodesic distance between two pincodes:
+
+.. code-block:: python
+
+    indiapins.distance("110001", "400001", metric="km")
+
+Find nearest pincodes from a location:
+
+.. code-block:: python
+
+    indiapins.nearest_pincodes(28.6139, 77.2090, k=5)
+
+Find neighboring pincodes from a source pincode:
+
+.. code-block:: python
+
+    indiapins.nearest_to_pincode("110001", k=10)
+
+Find pincodes or delivery offices within a radius:
+
+.. code-block:: python
+
+    indiapins.pincodes_in_radius("110001", radius_km=5)
+    indiapins.delivery_offices_in_radius((28.6139, 77.2090), radius_km=3)
+
+Directional and matrix utilities:
+
+.. code-block:: python
+
+    indiapins.bearing("110001", "400001")
+    indiapins.midpoint("110001", "400001")
+    indiapins.distance_matrix(["110001", "400001", "560001"], metric="km")
 
 
 Input Validation Examples

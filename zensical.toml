@@ -12,6 +12,8 @@ nav = [
   { "Home" = "index.md" },
   { "Installation" = "installation.md" },
   { "Usage" = "usage.md" },
+  { "Core Usage" = "usage-core.md" },
+  { "Geospatial Usage" = "usage-geo.md" },
   { "Contributing" = "contributing.md" },
   { "Changelog" = "changelog.md" },
 ]
