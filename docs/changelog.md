@@ -16,6 +16,7 @@ All notable changes to `indiapins` are documented in this file.
 - Split docs usage into separate core and geospatial guides for easier navigation
 - Standardized unknown-but-well-formed pincode handling: lookup/query APIs now raise `ValueError`, while `isvalid` continues to return `False`
 - Standardized state/district comparisons to be case-insensitive by default, with optional `case_sensitive=True` for exact matching
+- Dropped Python 3.10 support
 
 ## [1.0.6] - 2026-02-21
 

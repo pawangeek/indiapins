@@ -14,7 +14,7 @@ This installs the package and the `indiapins` CLI entry point.
 
 Python requirement:
 
-- Python 3.10 or newer
+- Python 3.11 or newer
 
 If `pip` is not available, install/update it first:
 

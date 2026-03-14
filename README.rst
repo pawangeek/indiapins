@@ -85,7 +85,7 @@ Features
 * Offline-friendly lookup from packaged compressed data
 * Geodesic distance, nearest, radius, bearing, midpoint, and matrix operations
 * No sqlite dependency required, easy to run in cloud/serverless environments
-* Works with Python 3.10, 3.11, 3.12, 3.13, 3.14 and PyPy
+* Works with Python 3.11, 3.12, 3.13, 3.14 and PyPy
 * Cross-platform support: Windows, macOS, and Linux
 * Simple API surface with fast in-memory filtering
 
