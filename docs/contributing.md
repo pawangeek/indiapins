@@ -1,17 +1,15 @@
 # Contributing
 
-
-Contributions are welcome, and they are greatly appreciated! Every little bit
-helps, and credit will always be given.
+Contributions are welcome and greatly appreciated. Every little bit helps, and
+credit is always given.
 
 You can contribute in many ways:
 
-Types of Contributions
-----------------------
+## Types of Contributions
 
 **Report Bugs**
 
-Report bugs at [https://github.com/pawangeek/indiapins/issues](https://github.com/pawangeek/indiapins/issues).
+Report bugs at [GitHub Issues](https://github.com/pawangeek/indiapins/issues).
 
 If you are reporting a bug, please include:
 
@@ -21,29 +19,27 @@ If you are reporting a bug, please include:
 
 **Fix Bugs**
 
-Look through the GitHub issues for bugs. Anything tagged with "bug" and "help
-wanted" is open to whoever wants to implement it.
+Look through issues tagged with `bug` and `help wanted`.
 
 **Implement Features**
 
-Look through the GitHub issues for features. Anything tagged with "enhancement"
-and "help wanted" is open to whoever wants to implement it.
+Look through issues tagged with `enhancement` and `help wanted`.
 
 **Write Documentation**
 
 `indiapins` could always use more documentation, whether as part of the
-official `indiapins` docs, in docstrings, or even on the web in blog posts, articles, and such.
+official docs, in docstrings, or in blog posts and articles.
 
 **Submit Feedback**
 
-The best way to send feedback is to file an issue at [https://github.com/pawangeek/indiapins/issues](https://github.com/pawangeek/indiapins/issues).
+The best way to send feedback is to file an issue at
+[GitHub Issues](https://github.com/pawangeek/indiapins/issues).
 
 If you are proposing a feature:
 
 - Explain in detail how it would work.
 - Keep the scope as narrow as possible, to make it easier to implement.
-- Remember that this is a volunteer-driven project, and that contributions
-  are welcome :)
+- Remember this is a volunteer-driven project.
 
 **Get Started!**
 
@@ -85,7 +81,7 @@ Ready to contribute? Here's how to set up `indiapins` for local development.
 7. Submit a pull request through the GitHub website.
 
 **Pull Request Guidelines**
----------------------------
+## Pull Request Guidelines
 
 Before you submit a pull request, check that it meets these guidelines:
 
@@ -95,15 +91,14 @@ Before you submit a pull request, check that it meets these guidelines:
    feature to the list in README.rst.
 3. The pull request should work for Python 3.10, 3.11, 3.12, 3.13, 3.14 and for PyPy.
 
-**Tips**
+## Tips
 
 To run a subset of tests:
 ```
-$ pytest tests.test_indiapins
+$ uv run pytest tests/test_indiapins.py
 ```
 
-**Deploying**
-------------
+## Deploying
 
 A reminder for the maintainers on how to deploy.
 Make sure all your changes are committed (including an entry in HISTORY.rst).

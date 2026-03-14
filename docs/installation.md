@@ -1,42 +1,64 @@
 Installation
 ============
 
-Stable release
---------------
+Install from PyPI
+-----------------
 
-To install indiapins, run this command in your terminal:
+The recommended way is installing the latest stable package from PyPI:
 
 ```
 $ pip install indiapins
 ```
 
-This is the preferred method to install indiapins, as it will always install the most recent stable release.
+This installs the package and the `indiapins` CLI entry point.
 
-If you don't have pip installed, this Python installation guide can guide you through the process.
+Python requirement:
+
+- Python 3.10 or newer
+
+If `pip` is not available, install/update it first:
 
 ```
-$ pip https://pip.pypa.io
-$ Python installation guide: http://docs.python-guide.org/en/latest/starting/installation/
+$ python -m pip install --upgrade pip
 ```
-From sources
+
+From Source (Local Development)
+-------------------------------
+
+Clone the repository and install locally:
+
+```
+$ git clone https://github.com/pawangeek/indiapins.git
+$ cd indiapins
+$ pip install .
+```
+
+For editable installs during development:
+
+```
+$ pip install -e .
+```
+
+Verify Installation
+-------------------
+
+Quick import check:
+
+```
+$ python -c "import indiapins; print(indiapins.__version__)"
+```
+
+Quick function check:
+
+```
+$ python -c "import indiapins; print(indiapins.isvalid('110001'))"
+```
+
+Expected output is `True` for the second command.
+
+Useful Links
 ------------
-The sources for indiapins can be downloaded from the Github repo.
 
-You can either clone the public repository:
-
-```
-$ git clone git://github.com/pawangeek/indiapins
-```
-Or download the tarball:
-
-```
-$ curl -OJL https://github.com/pawangeek/indiapins/tarball/master
-```
-Once you have a copy of the source, you can install it with:
-```
-$ python setup.py install
-```
-```
-Github repo: https://github.com/pawangeek/indiapins
-tarball: https://github.com/pawangeek/indiapins/tarball/master
-```
+- Project homepage: https://github.com/pawangeek/indiapins
+- Package on PyPI: https://pypi.org/project/indiapins/
+- Documentation: https://pawangeek.github.io/indiapins/

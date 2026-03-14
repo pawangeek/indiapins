@@ -28,6 +28,30 @@ indiapins
 * Github Repo: https://github.com/pawangeek/indiapins
 * PyPI: https://pypi.org/project/indiapins/
 
+What This Library Provides
+--------------------------
+
+`indiapins` gives you a local, packaged lookup dataset so you can resolve Indian
+pincodes without calling external APIs.
+
+The library currently exposes four core helpers:
+
+* ``matching(zipcode)``: fetch all place records for a pincode
+* ``isvalid(zipcode)``: check whether a pincode exists in the dataset
+* ``districtmatch(zipcode)``: get district name(s) for a pincode
+* ``coordinates(zipcode)``: get location-wise latitude/longitude values
+
+All public functions validate the input format strictly before lookup:
+
+* pincode must be a Python ``str``
+* length must be exactly 6
+* only digits are allowed
+
+Validation errors are explicit:
+
+* ``TypeError`` for non-string values (including ``None`` and empty string)
+* ``ValueError`` for wrong length or non-digit characters
+
 
 Installation
 ------------
@@ -47,11 +71,12 @@ Alternatively, install from source by cloning this repo:
 
 Features
 --------
-* Get all the mappings of given pins
-* The Python sqlite3 module is not required, so easily to use in Clouds (no additional dependencies)
-* Works with 3.10, 3.11, 3.12, 3.13, 3.14 and PyPy
-* Cross-platform: Windows, Mac, and Linux are officially supported.
-* Simple usage and very fast results
+* Get all the mappings of a given pincode
+* Offline-friendly lookup from packaged compressed data
+* No sqlite dependency required, easy to run in cloud/serverless environments
+* Works with Python 3.10, 3.11, 3.12, 3.13, 3.14 and PyPy
+* Cross-platform support: Windows, macOS, and Linux
+* Simple API surface with fast in-memory filtering
 
 
 Examples
@@ -60,7 +85,7 @@ Examples
 1. Exact Match
 ##############
 
-To find the names of all places, districts, circles and related information by given Indian Pincode
+Use ``matching`` to retrieve all places and postal metadata tied to a pincode.
 
 **Important: The Pincode should be of 6 digits, in string format**
 
@@ -77,11 +102,18 @@ To find the names of all places, districts, circles and related information by g
       'Region': 'Delhi Region', 'State': 'DELHI', 'Pincode': 110011,
       'Latitude': 28.6111111, 'Longitude': 77.2127500}]
 
+Records include these keys:
+
+* ``Name``, ``BranchType``, ``DeliveryStatus``
+* ``Circle``, ``Region``, ``Division``, ``District``, ``State``
+* ``Pincode`` (integer in returned data)
+* ``Latitude`` and ``Longitude`` (float or ``None``)
+
 
 2. Valid Pincode
 ################
 
-To check if the given Pincode is valid or not
+Use ``isvalid`` to quickly check whether a pincode exists in the dataset.
 
 .. code-block:: python
 
@@ -89,10 +121,13 @@ To check if the given Pincode is valid or not
 
     True
 
+``isvalid`` returns ``False`` for correctly formatted but unknown pincodes (for
+example ``"000000"``), and raises validation errors only for malformed input.
+
 3. District by Pincode
 ######################
 
-It extracts the district of given Indian pincode
+Use ``districtmatch`` when you only need district information.
 
 .. code-block:: python
 
@@ -100,10 +135,14 @@ It extracts the district of given Indian pincode
 
     'Jaipur'
 
+If multiple district values exist for a pincode, they are returned as a
+comma-separated string. If the pincode format is valid but absent in the
+dataset, ``districtmatch`` raises ``ValueError``.
+
 4. Coordinates of Pincode
 #########################
 
-It extracts all the coordinates of given Indian pincode
+Use ``coordinates`` to get office-level latitude/longitude mappings.
 
 .. code-block:: python
 
@@ -111,3 +150,51 @@ It extracts all the coordinates of given Indian pincode
 
     {'Udyog Bhawan': {'latitude': '28.6111111', 'longitude': '77.2127500'},
     'Nirman Bhawan': {'latitude': '28.6108611', 'longitude': '77.2148611'}}
+
+Notes:
+
+* Entries with missing coordinates are excluded
+* Latitude/longitude values are returned as strings for consistency
+* Unknown but well-formed pincodes return an empty dictionary
+
+
+Input Validation Examples
+-------------------------
+
+.. code-block:: python
+
+    import indiapins
+
+    # Valid input
+    indiapins.matching("110001")
+
+    # Invalid type -> TypeError
+    indiapins.matching(110001)
+
+    # Invalid length -> ValueError
+    indiapins.matching("11001")
+
+    # Invalid characters -> ValueError
+    indiapins.matching("11A001")
+
+
+Practical Patterns
+------------------
+
+Filter delivery-enabled offices:
+
+.. code-block:: python
+
+    delivery_only = [
+        row for row in indiapins.matching("110001")
+        if row["DeliveryStatus"] == "Delivery"
+    ]
+
+Extract coordinates into tuples for mapping tools:
+
+.. code-block:: python
+
+    points = {
+        office: (float(v["latitude"]), float(v["longitude"]))
+        for office, v in indiapins.coordinates("560001").items()
+    }
