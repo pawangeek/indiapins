@@ -45,7 +45,7 @@ Geospatial helpers are also available:
 
 * ``distance(pin1, pin2, metric="km")``
 * ``nearest_pincodes(lat, lon, k=5, metric="km")``
-* ``nearest_to_pincode(pin, k=10, metric="km")``
+* ``nearest_to_pincode(zipcode, k=10, metric="km")``
 * ``pincodes_in_radius(center, radius_km)``
 * ``delivery_offices_in_radius(center, radius_km)``
 * ``bearing(pin1, pin2)`` and ``midpoint(pin1, pin2)``
@@ -85,7 +85,7 @@ Features
 * Offline-friendly lookup from packaged compressed data
 * Geodesic distance, nearest, radius, bearing, midpoint, and matrix operations
 * No sqlite dependency required, easy to run in cloud/serverless environments
-* Works with Python 3.11, 3.12, 3.13, 3.14 and PyPy
+* Works with Python 3.11, 3.12, 3.13, and 3.14
 * Cross-platform support: Windows, macOS, and Linux
 * Simple API surface with fast in-memory filtering
 

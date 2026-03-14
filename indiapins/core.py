@@ -98,6 +98,13 @@ def _values_for_pincode(zipcode, key, zips):
     return values
 
 
+def _index_by_pincode(zips):
+    index = {}
+    for row in zips:
+        index.setdefault(str(row["Pincode"]), []).append(row)
+    return index
+
+
 def _resource_path(relative_path):
     """Get absolute path to resource, works for dev and for PyInstaller."""
     try:
@@ -114,6 +121,7 @@ _zips_json = _resource_path(
 )
 with bz2_open(_zips_json, "rt") as f:
     _zips = [json.loads(line) for i, line in enumerate(f)]
+_zips_by_pincode = _index_by_pincode(_zips)
 
 
 @_clean_zipcode
@@ -285,9 +293,15 @@ def pincodes_by_prefix(prefix, zips=None):
 
 def isvalid_bulk(pincodes):
     clean_pincodes = _clean_bulk_pincodes(pincodes)
-    return {zipcode: isvalid(zipcode) for zipcode in clean_pincodes}
+    return {zipcode: zipcode in _zips_by_pincode for zipcode in clean_pincodes}
 
 
 def matching_bulk(pincodes):
     clean_pincodes = _clean_bulk_pincodes(pincodes)
-    return {zipcode: matching(zipcode) for zipcode in clean_pincodes}
+    rows_by_pincode = {}
+    for zipcode in clean_pincodes:
+        rows = _zips_by_pincode.get(zipcode)
+        if rows is None:
+            raise ValueError(_unknown_pincode_error)
+        rows_by_pincode[zipcode] = rows
+    return rows_by_pincode

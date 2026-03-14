@@ -38,7 +38,14 @@ def _require_geodistpy():
     global _geo_midpoint
     global _geo_point_in_radius
 
-    if _geo_geodist is not None:
+    if (
+        _geo_bearing is not None
+        and _geo_geodist is not None
+        and _geo_geodist_matrix is not None
+        and _geo_geodesic_knn is not None
+        and _geo_midpoint is not None
+        and _geo_point_in_radius is not None
+    ):
         return
 
     try:
@@ -48,6 +55,22 @@ def _require_geodistpy():
             "geodistpy is required for geo distance features. "
             "Install it with `pip install geodistpy`."
         ) from exc
+
+    required_names = (
+        "bearing",
+        "geodist",
+        "geodist_matrix",
+        "geodesic_knn",
+        "midpoint",
+        "point_in_radius",
+    )
+    missing_names = [name for name in required_names if not hasattr(module, name)]
+    if missing_names:
+        missing = ", ".join(missing_names)
+        raise ImportError(
+            "Installed geodistpy is missing required APIs: "
+            f"{missing}. Upgrade geodistpy to a compatible version."
+        )
 
     _geo_bearing = module.bearing
     _geo_geodist = module.geodist
