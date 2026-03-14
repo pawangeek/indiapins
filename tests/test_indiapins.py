@@ -4,7 +4,27 @@
 
 import pytest
 
-from indiapins import matching, isvalid, districtmatch, coordinates, _clean
+from indiapins import (
+    _clean,
+    circlematch,
+    coordinates,
+    delivery_offices,
+    districtmatch,
+    districts_in_state,
+    divisionmatch,
+    has_delivery,
+    isvalid,
+    isvalid_bulk,
+    matching,
+    matching_bulk,
+    offices_by_branch_type,
+    pincodes_in_district,
+    pincodes_in_state,
+    pincodes_by_prefix,
+    regionmatch,
+    statematch,
+    states,
+)
 
 
 # ──────────────────────────────────────────────
@@ -15,34 +35,6 @@ EXPECTED_KEYS = {
     "BranchType", "DeliveryStatus", "District", "State",
     "Latitude", "Longitude",
 }
-
-
-# ──────────────────────────────────────────────
-# Fixtures
-# ──────────────────────────────────────────────
-@pytest.fixture
-def delhi_pincode():
-    return "110001"
-
-
-@pytest.fixture
-def mumbai_pincode():
-    return "400001"
-
-
-@pytest.fixture
-def kolkata_pincode():
-    return "700001"
-
-
-@pytest.fixture
-def bangalore_pincode():
-    return "560001"
-
-
-@pytest.fixture
-def chennai_pincode():
-    return "600001"
 
 
 # ──────────────────────────────────────────────
@@ -94,9 +86,9 @@ class TestMatching:
         assert len(result) > 0
         assert all(r["State"] == "TAMIL NADU" for r in result)
 
-    def test_matching_invalid_pincode_returns_empty(self):
-        result = matching("000000")
-        assert result == []
+    def test_matching_unknown_pincode_raises_value_error(self):
+        with pytest.raises(ValueError, match="Invalid Pincode"):
+            matching("000000")
 
     def test_matching_record_fields_types(self, delhi_pincode):
         result = matching(delhi_pincode)
@@ -248,9 +240,9 @@ class TestCoordinates:
             assert isinstance(name, str)
             assert len(name) > 0
 
-    def test_invalid_pincode_returns_empty_dict(self):
-        result = coordinates("000000")
-        assert result == {}
+    def test_unknown_pincode_raises_value_error(self):
+        with pytest.raises(ValueError, match="Invalid Pincode"):
+            coordinates("000000")
 
 
 # ──────────────────────────────────────────────
@@ -413,3 +405,142 @@ class TestRecordFields:
         for record in result:
             ds = record["DeliveryStatus"]
             assert ds in valid_statuses, f"Unknown status: {ds}"
+
+
+class TestReverseLookup:
+    def test_states_returns_sorted_unique_strings(self):
+        result = states()
+        assert isinstance(result, list)
+        assert len(result) > 0
+        assert result == sorted(set(result))
+        assert all(isinstance(s, str) and s for s in result)
+
+    def test_districts_in_state_case_insensitive_by_default(self):
+        upper = districts_in_state("DELHI")
+        lower = districts_in_state("delhi")
+        mixed = districts_in_state("DeLhI")
+        assert upper == lower == mixed
+        assert len(lower) > 0
+
+    def test_districts_in_state_case_sensitive_toggle(self):
+        assert districts_in_state("delhi", case_sensitive=True) == []
+        assert len(districts_in_state("DELHI", case_sensitive=True)) > 0
+
+    def test_pincodes_in_state_case_insensitive_by_default(self):
+        upper = pincodes_in_state("KARNATAKA")
+        lower = pincodes_in_state("karnataka")
+        assert upper == lower
+        assert "560001" in lower
+
+    def test_pincodes_in_district_case_insensitive_by_default(self):
+        upper = pincodes_in_district("NEW DELHI")
+        lower = pincodes_in_district("new delhi")
+        assert upper == lower
+        assert "110001" in lower
+
+    def test_unknown_state_or_district_returns_empty_list(self):
+        assert districts_in_state("NOT_A_STATE") == []
+        assert pincodes_in_state("NOT_A_STATE") == []
+        assert pincodes_in_district("NOT_A_DISTRICT") == []
+
+    @pytest.mark.parametrize("bad_state", [None, 123, ["DELHI"], {"state": "DELHI"}])
+    def test_malformed_state_type_raises_type_error(self, bad_state):
+        with pytest.raises(TypeError):
+            districts_in_state(bad_state)
+        with pytest.raises(TypeError):
+            pincodes_in_state(bad_state)
+
+    @pytest.mark.parametrize("bad_district", [None, 123, ["NEW DELHI"], {"district": "NEW DELHI"}])
+    def test_malformed_district_type_raises_type_error(self, bad_district):
+        with pytest.raises(TypeError):
+            pincodes_in_district(bad_district)
+
+    @pytest.mark.parametrize("empty_value", ["", "   ", "\t"])
+    def test_empty_state_or_district_raises_value_error(self, empty_value):
+        with pytest.raises(ValueError):
+            districts_in_state(empty_value)
+        with pytest.raises(ValueError):
+            pincodes_in_state(empty_value)
+        with pytest.raises(ValueError):
+            pincodes_in_district(empty_value)
+
+
+class TestAdditionalCoreApis:
+    def test_statematch_matches_matching_data(self, delhi_pincode):
+        records = matching(delhi_pincode)
+        expected = ", ".join(sorted({row["State"] for row in records}))
+        assert statematch(delhi_pincode) == expected
+
+    def test_division_circle_region_match_against_records(self, delhi_pincode):
+        records = matching(delhi_pincode)
+        expected_division = ", ".join(sorted({row["Division"] for row in records}))
+        expected_circle = ", ".join(sorted({row["Circle"] for row in records}))
+        expected_region = ", ".join(sorted({row["Region"] for row in records}))
+        assert divisionmatch(delhi_pincode) == expected_division
+        assert circlematch(delhi_pincode) == expected_circle
+        assert regionmatch(delhi_pincode) == expected_region
+
+    @pytest.mark.parametrize("func", [statematch, divisionmatch, circlematch, regionmatch])
+    def test_admin_matchers_unknown_pincode_raise_value_error(self, func):
+        with pytest.raises(ValueError, match="Invalid Pincode"):
+            func("000000")
+
+    def test_has_delivery_matches_underlying_records(self, delhi_pincode):
+        records = matching(delhi_pincode)
+        expected = any(row["DeliveryStatus"] == "Delivery" for row in records)
+        assert has_delivery(delhi_pincode) is expected
+
+    def test_delivery_offices_returns_delivery_only(self, delhi_pincode):
+        offices = delivery_offices(delhi_pincode)
+        assert isinstance(offices, list)
+        assert len(offices) > 0
+        assert all(row["DeliveryStatus"] == "Delivery" for row in offices)
+
+    def test_offices_by_branch_type_case_insensitive_by_default(self, delhi_pincode):
+        records = matching(delhi_pincode)
+        branch_type = records[0]["BranchType"]
+        lower = offices_by_branch_type(delhi_pincode, branch_type.lower())
+        assert len(lower) > 0
+        assert all(row["BranchType"] == branch_type for row in lower)
+
+    def test_offices_by_branch_type_unknown_returns_empty(self, delhi_pincode):
+        assert offices_by_branch_type(delhi_pincode, "ZZ") == []
+
+    def test_offices_by_branch_type_malformed_input_raises(self, delhi_pincode):
+        with pytest.raises(TypeError):
+            offices_by_branch_type(delhi_pincode, None)
+        with pytest.raises(ValueError):
+            offices_by_branch_type(delhi_pincode, "  ")
+
+    def test_pincodes_by_prefix_returns_unique_sorted(self, delhi_pincode):
+        prefix = delhi_pincode[:2]
+        result = pincodes_by_prefix(prefix)
+        assert isinstance(result, list)
+        assert result == sorted(set(result))
+        assert delhi_pincode in result
+        assert all(pin.startswith(prefix) for pin in result)
+
+    @pytest.mark.parametrize("bad_prefix", [None, 11, "1", "12345", "AB", "11A"])
+    def test_pincodes_by_prefix_malformed_raises(self, bad_prefix):
+        with pytest.raises((TypeError, ValueError)):
+            pincodes_by_prefix(bad_prefix)
+
+    def test_isvalid_bulk_returns_bool_map(self, delhi_pincode):
+        result = isvalid_bulk([delhi_pincode, "000000"])
+        assert result[delhi_pincode] is True
+        assert result["000000"] is False
+
+    @pytest.mark.parametrize("bad_bulk", [None, "110001", [None], ["11001"], ["11A001"]])
+    def test_isvalid_bulk_malformed_raises(self, bad_bulk):
+        with pytest.raises((TypeError, ValueError)):
+            isvalid_bulk(bad_bulk)
+
+    def test_matching_bulk_returns_map(self, delhi_pincode, mumbai_pincode):
+        result = matching_bulk([delhi_pincode, mumbai_pincode])
+        assert isinstance(result, dict)
+        assert len(result[delhi_pincode]) > 0
+        assert len(result[mumbai_pincode]) > 0
+
+    def test_matching_bulk_unknown_pincode_raises(self, delhi_pincode):
+        with pytest.raises(ValueError, match="Invalid Pincode"):
+            matching_bulk([delhi_pincode, "000000"])

@@ -53,7 +53,6 @@ test: ## run tests quickly with the default Python
 	uv run pytest
 
 test-all: ## run tests on all Python versions with uv
-	uv run --python 3.10 pytest
 	uv run --python 3.11 pytest
 	uv run --python 3.12 pytest
 	uv run --python 3.13 pytest

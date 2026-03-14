@@ -1,104 +1,67 @@
 """Top-level package for indiapins."""
 
 __author__ = """Pawan Kumar Jain"""
-__email__ = 'pawanjain.432@gmail.com'
-__version__ = '1.0.6'
+__email__ = "pawanjain.432@gmail.com"
+__version__ = "1.1.0"
 
-import bz2
-import json
-import os
-import re
-import sys
-
-_valid_zipcode_length = 6
-_digits = re.compile(r"[^\d]")
-
-if sys.version_info >= (3, 0):
-    bz2_open = bz2.open
-else:
-    raise TypeError("Indiapins supported only on Python 3")
-
-
-def _clean_zipcode(fn):
-    def decorator(zipcode, *args, **kwargs):
-        if not zipcode or not isinstance(zipcode, str):
-            raise TypeError("Invalid type, pincode must be a string.")
-
-        return fn(
-            _clean(zipcode, _valid_zipcode_length), *args, **kwargs
-        )
-
-    return decorator
-
-
-def _clean(zipcode, valid_length=_valid_zipcode_length):
-    """ Assumes pincode is of type `str` """
-
-    if len(zipcode) != valid_length:
-        raise ValueError(
-            'Invalid format, pincode must be of the format: "######"'
-        )
-
-    if bool(_digits.search(zipcode)):
-        raise ValueError('Invalid characters, pincode may only contain digits')
-
-    return zipcode
-
-
-def _resource_path(relative_path):
-    """ Get absolute path to resource, works for dev and for PyInstaller """
-    try:
-        # PyInstaller creates a temp folder nad stores path in _MEIPASS
-        base_path = sys._MEIPASS
-    except AttributeError:
-        base_path = os.path.abspath(".")
-
-    return os.path.join(base_path, relative_path)
-
-
-_zips_json = _resource_path(
-    os.path.join(os.path.dirname(os.path.abspath(__file__)), "pins.json.bz2")
+from .core import (
+    _clean,
+    circlematch,
+    coordinates,
+    delivery_offices,
+    districtmatch,
+    districts_in_state,
+    divisionmatch,
+    has_delivery,
+    isvalid,
+    isvalid_bulk,
+    matching,
+    matching_bulk,
+    offices_by_branch_type,
+    pincodes_in_district,
+    pincodes_in_state,
+    pincodes_by_prefix,
+    regionmatch,
+    statematch,
+    states,
 )
-with bz2_open(_zips_json, "rt") as f:
-    _zips = [json.loads(line) for i, line in enumerate(f)]
+from .geo import (
+    bearing,
+    delivery_offices_in_radius,
+    distance,
+    distance_matrix,
+    midpoint,
+    nearest_pincodes,
+    nearest_to_pincode,
+    pincodes_in_radius,
+)
 
-
-@_clean_zipcode
-def matching(zipcode, zips=None):
-    """ Retrieve zipcode dict for provided pincode """
-    if zips is None:
-        zips = _zips
-
-    return [z for z in zips if str(z['Pincode']) == zipcode]
-
-
-@_clean_zipcode
-def isvalid(zipcode):
-    return bool(matching(zipcode))
-
-
-@_clean_zipcode
-def districtmatch(zipcode, zips=None):
-    if zips is None:
-        zips = _zips
-
-    districts = list(set([z['District'] for z in zips if str(z['Pincode']) == zipcode]))
-
-    if len(districts) == 0:
-        raise ValueError('Invalid Pincode, Pincode not in database')
-    else:
-        return ', '.join(districts)
-
-
-@_clean_zipcode
-def coordinates(zipcode):
-    match_list = matching(zipcode)
-
-    coordinates_dict = {}
-
-    for matches in match_list:
-        name, latitude, longitude = matches['Name'], matches['Latitude'], matches['Longitude']
-        if latitude is not None and longitude is not None:
-            coordinates_dict[name] = {"latitude": str(latitude), "longitude": str(longitude)}
-
-    return coordinates_dict
+__all__ = [
+    "_clean",
+    "matching",
+    "isvalid",
+    "isvalid_bulk",
+    "districtmatch",
+    "statematch",
+    "divisionmatch",
+    "circlematch",
+    "regionmatch",
+    "coordinates",
+    "has_delivery",
+    "delivery_offices",
+    "states",
+    "districts_in_state",
+    "pincodes_in_state",
+    "pincodes_in_district",
+    "offices_by_branch_type",
+    "pincodes_by_prefix",
+    "matching_bulk",
+    "distance",
+    "nearest_pincodes",
+    "nearest_to_pincode",
+    "pincodes_in_radius",
+    "delivery_offices_in_radius",
+    "bearing",
+    "midpoint",
+    "distance_matrix",
+]
