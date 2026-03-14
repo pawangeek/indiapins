@@ -65,9 +65,8 @@ coverage: ## check code coverage quickly with the default Python
 	uv run coverage html
 	$(BROWSER) htmlcov/index.html
 
-docs: ## generate mkdocs documentation
-	uv run mkdocs build
-	uv run mkdocs serve
+docs: ## generate documentation
+	uv run zensical build --clean
 
 release: dist ## package and upload a release
 	uv run twine upload dist/*

@@ -1,30 +1,29 @@
-name: Publish Docs
+name: Publish-Docs
 
 on:
-  pull_request:
-    types:
-      - closed
-    branches:
-      - master
   push:
     branches:
       - master
+    tags:
+      - "v*"
 
 permissions:
   contents: write
 
 jobs:
   deploy:
-    if: github.event_name == 'push' || github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Install uv
-        uses: astral-sh/setup-uv@v4
-
-      - name: Install dependencies
-        run: uv sync
-
-      - name: Deploy docs
-        run: uv run mkdocs gh-deploy --force
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+      - name: Install zensical
+        run: pip install zensical
+      - name: Build docs
+        run: zensical build --clean
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
